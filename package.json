@@ -1,5 +1,5 @@
 {
-    "name": "rename_me",
+    "name": "lexourjs",
     "version": "0.0.1",
     "description": "Syntax highlighter",
     "main": "src/index.ts",
@@ -19,7 +19,7 @@
         "@types/moo": "^0.5.3",
         "@types/react": "^16.9.43",
         "moo": "^0.5.1",
-        "react": "16.13.1"
+        "react": "^16.13.1"
     },
     "devDependencies": {
         "typescript": "^3.9.7"

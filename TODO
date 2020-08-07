@@ -12,7 +12,6 @@
 [_] Add indent detection and customization
 [_] Write Lexers for other languages (priority order: JSX -> TS -> TSX -> HTML -> CSS -> other)
 [_] Add READ AS annotation
-[_] Add Toy Language support (lang could be inputted as a moo lexer)
 
 // CODE MAINTENANCE //
 [_] Redo token naming conventions (& theme).

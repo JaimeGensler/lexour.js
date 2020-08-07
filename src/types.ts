@@ -1,7 +1,7 @@
 import { Lexer } from 'moo';
 import { CSSProperties } from 'react';
 
-type BuiltInTheme = 'oneDarkPro';
+type BuiltInTheme = 'oneDarkPro' | 'githubLight';
 export interface ThemeObject {
     default: CSSProperties;
     lineNumbers?: CSSProperties;
@@ -16,10 +16,10 @@ type BuiltInLang =
     | 'js' /* | 'typescript' | 'ts' | 'jsx' | 'tsx'*/;
 export type Lang = BuiltInLang | Lexer;
 
-export type Props = {
-    code: string;
-    lang: Lang;
+export enum AnnotationType {
+    COMMENT = 'COMMENT',
 
-    theme?: Theme;
-    firstLine?: number;
-};
+    KEEP = 'KEEP',
+    NEXT_LINE = 'NEXT_LINE',
+    MARK_AS = 'MARK',
+}
