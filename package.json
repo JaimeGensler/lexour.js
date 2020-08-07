@@ -4,7 +4,7 @@
     "description": "Syntax highlighter",
     "main": "src/index.ts",
     "scripts": {
-        "test": "test"
+        "test": "jest --coverage"
     },
     "repository": {
         "type": "git",
@@ -16,12 +16,15 @@
     "author": "Jaime Gensler",
     "license": "UNLICENSED",
     "dependencies": {
+        "@types/jest": "^26.0.9",
         "@types/moo": "^0.5.3",
         "@types/react": "^16.9.43",
         "moo": "^0.5.1",
         "react": "^16.13.1"
     },
     "devDependencies": {
+        "jest": "^26.2.2",
+        "ts-jest": "^26.1.4",
         "typescript": "^3.9.7"
     }
 }
