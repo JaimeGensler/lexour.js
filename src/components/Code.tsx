@@ -15,22 +15,22 @@ export default function Code({ codeLines, showLineNumbers, firstLine }: Props) {
     const lexer = useContext(LexerContext);
 
     let lexerState: LexerState = {
-        ...lexer.reset().save(),
+        ...lexer.save(),
         line: firstLine,
     };
-    console.log('starting at', firstLine);
 
     const codeComponents: ReactNodeArray = codeLines.map(codeLine => {
         const currentLine = lexerState.line;
-        const tokens = getTokens(lexer, codeLine, lexerState);
+        const tokens = getTokens(
+            lexer.reset(`${codeLine}\n`, lexerState),
+            lexerState,
+        );
+        const nextLine = tokens.length ? lexerState.line + 1 : lexerState.line;
 
-        console.log(lexerState.line);
+        lexerState = { ...lexer.save(), line: nextLine };
 
-        // This resets it
-        lexerState = lexer.save();
-
+        // Skip line if there are no tokens to render (only contains annotations)
         if (tokens.length === 0) {
-            lexerState.line--;
             return null;
         }
 
