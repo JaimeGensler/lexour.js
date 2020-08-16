@@ -24,10 +24,7 @@ export default function CodeBlock({
     showLineNumbers = false,
     firstLine = 1,
 }: Props) {
-    const codeLines = useMemo(() => {
-        console.log('trying to run');
-        return getCodeLines(code);
-    }, [code]);
+    const codeLines = useMemo(() => getCodeLines(code), [code]);
     const lexer = typeof lang === 'string' ? lexers[lang] : lang;
     const themeObject = typeof theme === 'string' ? themes[theme] : theme;
 

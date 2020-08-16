@@ -8,9 +8,9 @@ type Props = {
 export default function Text({ type, value }: Props) {
     const { tokens } = useContext(ThemeContext);
 
+    // REFACTOR THIS WHEN YOU CLEAN UP TOKEN NAMES
     const primaryType = type.replace(/(?<=^_?[A-Z]+)_.+/, '');
-    // @ts-ignore Will fix when token names and style fetch is reworked
-    const style = tokens[primaryType];
+    const style = tokens?.[primaryType];
 
     return <span style={style}>{value}</span>;
 }

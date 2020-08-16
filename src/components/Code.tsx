@@ -1,13 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, ReactNodeArray } from 'react';
 import { LexerState } from 'moo';
 
-import { AnnotationType } from '../types';
-import { isTypeAnnotation, getAnnotationType } from '../utils/annotations';
 import LexerContext from './Contexts/LexerContext';
 import Line from './Line';
-import Text from './Tokens/Text';
-import KeepAnnotation from './Tokens/KeepAnnotation';
-import MarkAnnotation from './Tokens/MarkAsAnnotation';
+import getTokens from './Tokens';
 
 type Props = {
     codeLines: string[];
@@ -22,62 +18,26 @@ export default function Code({ codeLines, showLineNumbers, firstLine }: Props) {
         ...lexer.reset().save(),
         line: firstLine,
     };
+    console.log('starting at', firstLine);
 
-    const codeComponents = codeLines.map(codeLine => {
+    const codeComponents: ReactNodeArray = codeLines.map(codeLine => {
         const currentLine = lexerState.line;
-        let shouldSkipLine = false;
+        const tokens = getTokens(lexer, codeLine, lexerState);
 
-        const tokens = Array.from(
-            lexer.reset(`${codeLine}\n`, lexerState),
-            ({ type, text, value, col, line }) => {
-                // === Handle undefined tokens ===
-                if (type === undefined) {
-                    throw new TypeError(
-                        `Lexer Error: Type of token "${value}" (line ${line}, col ${col}) is undefined!`,
-                    );
-                }
+        console.log(lexerState.line);
 
-                // === Handle lexour annotations ===
-                if (isTypeAnnotation(type)) {
-                    const annotationType = getAnnotationType(value);
-
-                    switch (annotationType) {
-                        case AnnotationType.KEEP:
-                            return <KeepAnnotation key={col} text={text} />;
-
-                        case AnnotationType.NEXT_LINE:
-                            lexerState.line = 5;
-                            break;
-
-                        case AnnotationType.MARK_AS:
-                            return <MarkAnnotation key={col} value={value} />;
-
-                        default:
-                            shouldSkipLine = true;
-                            return null;
-                    }
-                }
-
-                // === Handle empty lines ===
-                if (type === 'EMPTYLINE') {
-                    // This is kind of a hacky solution, but it'll work for now
-                    return <span key={col}> </span>;
-                }
-
-                return <Text key={col} value={value} type={type} />;
-            },
-        );
-
+        // This resets it
         lexerState = lexer.save();
 
-        if (shouldSkipLine) {
-            lexerState.line = currentLine;
+        if (tokens.length === 0) {
+            lexerState.line--;
             return null;
         }
 
         return (
             <Line
-                lineNumber={showLineNumbers ? currentLine : 0}
+                showLineNumbers={showLineNumbers}
+                lineNumber={currentLine}
                 key={currentLine}
             >
                 {tokens}
