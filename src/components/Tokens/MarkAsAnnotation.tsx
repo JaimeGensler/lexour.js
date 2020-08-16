@@ -1,11 +1,15 @@
-import React, { useContext } from 'react';
-import ThemeContext from '../Contexts/ThemeContext';
+import React from 'react';
 import { getMarkAnnotationMatches } from '../../utils/annotations';
+import useTheme from '../../utils/useTheme';
 
 type Props = { value: string };
 export default function MarkAsAnnotation({ value }: Props) {
-    const { tokens } = useContext(ThemeContext);
     const [chars, tokenType] = getMarkAnnotationMatches(value);
-    const style = tokens?.[tokenType.toUpperCase()];
-    return <span style={style}>{chars}</span>;
+    const style = useTheme(tokenType);
+
+    return (
+        <span className="lexour.annotation" style={style}>
+            {chars}
+        </span>
+    );
 }

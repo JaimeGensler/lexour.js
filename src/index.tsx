@@ -31,7 +31,7 @@ export default function CodeBlock({
     return (
         <ThemeContext.Provider value={themeObject}>
             <LexerContext.Provider value={lexer}>
-                <pre style={{ margin: 0, ...themeObject.default }}>
+                <pre style={{ margin: 0, ...themeObject.DEFAULT }}>
                     <Code
                         codeLines={codeLines}
                         firstLine={firstLine}

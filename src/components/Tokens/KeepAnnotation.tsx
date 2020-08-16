@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
-import ThemeContext from '../Contexts/ThemeContext';
+import React from 'react';
+import useTheme from '../../utils/useTheme';
 
 type Props = { text: string };
 export default function KeepAnnotation({ text }: Props) {
-    const { tokens } = useContext(ThemeContext);
+    const style = useTheme('comment');
 
-    const style = tokens?.['COMMENT'];
-    return <span style={style}>{text.replace(/KEEP[ \t]/, '')}</span>;
+    return (
+        <span className="lexour.annotation" style={style}>
+            {text.replace(/KEEP[ \t]/, '')}
+        </span>
+    );
 }

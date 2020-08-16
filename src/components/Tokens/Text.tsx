@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
-import ThemeContext from '../Contexts/ThemeContext';
+import React from 'react';
+import useTheme from '../../utils/useTheme';
 
 type Props = {
     type: string;
     value: string;
 };
 export default function Text({ type, value }: Props) {
-    const { tokens } = useContext(ThemeContext);
+    const style = useTheme(type);
 
-    // REFACTOR THIS WHEN YOU CLEAN UP TOKEN NAMES
-    const primaryType = type.replace(/(?<=^_?[A-Z]+)_.+/, '');
-    const style = tokens?.[primaryType];
-
-    return <span style={style}>{value}</span>;
+    return (
+        <span className={type} style={style}>
+            {value}
+        </span>
+    );
 }

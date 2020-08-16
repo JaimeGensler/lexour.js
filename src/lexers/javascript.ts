@@ -1,34 +1,44 @@
 import moo from 'moo';
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar
 
-// This may not be exactly perfect, but it's sufficient for now.
+// This is now final.
 const validIdentifier = '[_$A-Za-z][_$A-Za-z0-9]*';
-// Strings being able to split over lines is going to take some tricks
-const STRINGESCAPE = /(?:\\u[A-Fa-f0-9]{4})|(?:\\.)/;
+const escapedSequence = [
+    { match: /(?:\\u[A-Fa-f0-9]{4})/ },
+    { match: /(?:\\.)/ },
+];
+const withDestructuring = (s: string) => `(?<=${s}[\\[{\\t, _$A-Za-z]+?)`;
 
 export default moo.states({
     main: {
-        LEXOUR_ANNOTATION_singleline: {
-            match: /\/\/@.*?$/,
-            value: s => s.replace(/^\/\/@[ \t]*/, ''),
-        },
-        LEXOUR_ANNOTATION_inline: {
-            match: /\/\*@.*?@\*\//,
-            value: s => s.replace(/^\/\*@[ \t]*|[ \t]*@\*\/$/g, ''),
-        },
-        COMMENT_block: { match: /\/\*/, push: 'commentBlock' },
-        COMMENT_singleline: /\/\/.*$/,
-        // Hashbang is apparently a new addition and also I think not finalized
-        COMMENT_hashBang: /^#!.*$/,
+        'lexour.annotation': [
+            {
+                match: /\/\/@.*?$/,
+                value: s => s.replace(/^\/\/@[ \t]*/, ''),
+            },
+            {
+                match: /\/\*@.*?@\*\//,
+                value: s => s.replace(/^\/\*@[ \t]*|[ \t]*@\*\/$/g, ''),
+            },
+        ],
 
-        STRING_start: { match: ["'", '"'], push: 'string' },
-        TEMPLATELITERAL_start: { match: '`', push: 'templateLiteral' },
+        'comment': [
+            { match: /\/\*/, push: 'commentBlock' },
+            { match: /\/\/.*$/ },
+        ],
+        'comment.alternate': /^#!.*$/, //Hashbang is a newer addition, also maybe not finalized
 
-        PUNCTUATION_leftBrace: { match: '{', push: 'main' },
-        PUNCTUATION_rightBrace: { match: '}', pop: 1 },
-        PUNCTUATION_misc: /[\(\)\,\[\]\;\.]/,
+        'string': { match: ["'", '"'], push: 'string' },
+        'string.template': { match: '`', push: 'templateLiteral' },
 
-        KEYWORD: [
+        'punctuation': [
+            { match: '{', push: 'main' }, //left brace
+            { match: '}', pop: 1 }, // right brace
+            { match: /[\(\)\,\[\]\;\.]/ }, // misc
+        ],
+
+        // These need to be modified per https://github.com/no-context/moo#keywords
+        'keyword': [
             'async',
             'await',
             'break',
@@ -72,9 +82,11 @@ export default moo.states({
             'while',
             'with',
             'yield',
+            '=>',
         ],
-        KEYWORD_arrowFunc: '=>',
-        OPERATOR: [
+        'keyword.arrow': '=>',
+
+        'operator': [
             // Arithmetic
             '+',
             '*',
@@ -121,59 +133,75 @@ export default moo.states({
             '||',
             '!',
         ],
-        LITERAL_value: ['null', 'undefined', 'true', 'false'],
-        LITERAL_number: /[\d]+(?:\.[\d]+)?/,
+        'literal.value': ['null', 'undefined', 'true', 'false'],
+        // There are more ways of declaring numbers that I can account for reasonably easily
+        'literal.number': /[\d]+(?:\.[\d]+)?/,
 
-        CONSTANT_this: 'this',
-        // This is an incredibly aggressive regex and probably best replaced
-        FUNCTION_declarationArrow: new RegExp(validIdentifier + '(?=[^]*?=>)'),
-        VARIABLE_declaration: new RegExp(
-            '(?<=(?:let|var)[\\[{\\t, _$A-Za-z]+?)' + validIdentifier,
+        'constant.this': 'this',
+        'constant.class': [
+            {
+                match: new RegExp(
+                    '(?<=(?:class|extends|new)[\\t ]+?)' + validIdentifier,
+                ),
+            },
+            {
+                match: 'super',
+            },
+        ],
+
+        // This is an incredibly aggressive regex and best replaced
+        'function__declaration.arrow': new RegExp(
+            validIdentifier + '(?=[^]*?=>)',
         ),
-        FUNCTION_declaration: new RegExp(
+        'function__declaration': new RegExp(
             '(?<=function\\*?[\\t ]+?)' + validIdentifier,
         ),
-        CONSTANT_declaration: new RegExp(
-            '(?<=const[[{\\t, _$A-Za-z]+?)' + validIdentifier,
+        'variable__declaration': new RegExp(
+            withDestructuring('(?:let|var)') + validIdentifier,
         ),
-        CONSTANT_classDeclaration: new RegExp(
-            '(?<=class[\\t ]+?)' + validIdentifier,
+        'constant__declaration': new RegExp(
+            withDestructuring('const') + validIdentifier,
         ),
 
-        CONSTANT_superInvocation: /super(?=[ \t]*\(.*?)/,
-        CONSTANT_classRef: new RegExp(
-            '(?<=(?:extends|new)[\\t ]+?)' + validIdentifier,
-        ),
-        METHOD_invocation: new RegExp(
+        'method__invocation': new RegExp(
             '(?<=\\.)' + validIdentifier + '(?=[ \\t]*\\(.*?)',
         ),
-        FUNCTION_invocation: new RegExp(validIdentifier + '(?=[ \\t]*\\(.*?)'),
-        CONSTANT_unknownRef: /[A-Z][_$A-Za-z0-9]*/,
-        VARIABLE_unknownRef: new RegExp(validIdentifier),
+        'function__invocation': new RegExp(
+            validIdentifier + '(?=[ \\t]*\\(.*?)',
+        ),
+        'constant__ref': /[A-Z][_$A-Za-z0-9]*/,
+        'variable__ref': new RegExp(validIdentifier),
 
-        EMPTYLINE: { match: /^[ \t]*\n$/, lineBreaks: true },
-        NEWLINE: { match: /\n/, lineBreaks: true },
-        INDENTATION: /^[ \t]+/,
-        WHITESPACE: /[ \t]+/,
+        'empty': { match: /^[ \t]*\n$/, lineBreaks: true },
+        'newline': { match: /\n/, lineBreaks: true },
+        'indentation': /^[ \t]+/,
+        'whitespace': /[ \t]+/,
     },
     commentBlock: {
-        COMMENT_block_end: { match: /\*\//, pop: 1 },
-        COMMENT_content: /.+?(?:(?=\*\/)|(?=\n))/,
-        NEWLINE: { match: /\n/, lineBreaks: true },
-        INDENTATION: /^[ \t]+/,
+        comment: [
+            { match: /.+?(?:(?=\*\/)|(?=\n))/ },
+            { match: /\*\//, pop: 1 },
+        ],
+        newline: { match: /\n/, lineBreaks: true },
+        indentation: /^[ \t]+/,
     },
-    // This works for now, but does create some unnecessary token groups
-    // (but non-noticeable/problematic groups)
     string: {
-        STRINGESCAPE,
-        STRING_content: /(?:[^\\]+?(?="|\\))|(?:[^\\]+?(?='|\\))/,
-        STRING_end: { match: /(?:(?<=".+?)")|(?:(?<='.+?)')/, pop: 1 },
+        'string.escape': escapedSequence,
+        'string': [
+            // This works for now, but does create some unnecessary token groups
+            // (but non-noticeable/problematic groups)
+            { match: /(?:[^\\]+?(?="|\\))|(?:[^\\]+?(?='|\\))/ },
+            { match: /(?:(?<=".+?)")|(?:(?<='.+?)')/, pop: 1 },
+        ],
     },
     templateLiteral: {
-        STRINGESCAPE,
-        TEMP_LITERAL_end: { match: '`', pop: 1 },
-        TEMP_LITERAL_interpolation_start: { match: '${', push: 'main' },
-        NEWLINE: { match: /\n/, lineBreaks: true },
-        WHITESPACE: /[ \t]+/,
+        'string.escape': escapedSequence,
+        'string.template': [
+            // This needs content!
+            { match: '`', pop: 1 },
+        ],
+        'string.template.interpolation': { match: '${', push: 'main' },
+        'newline': { match: /\n/, lineBreaks: true },
+        'whitespace': /[ \t]+/,
     },
 });

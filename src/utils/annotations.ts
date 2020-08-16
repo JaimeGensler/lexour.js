@@ -1,7 +1,7 @@
 import { AnnotationType } from '../types';
 
 export function isTypeAnnotation(type: string): boolean {
-    return type.startsWith('LEXOUR_');
+    return type.startsWith('lexour.annotation');
 }
 
 const expressions = {

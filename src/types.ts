@@ -3,11 +3,9 @@ import { CSSProperties } from 'react';
 
 type BuiltInTheme = 'oneDarkPro' | 'githubLight';
 export interface ThemeObject {
-    default: CSSProperties;
-    lineNumbers?: CSSProperties;
-    tokens?: {
-        [tokenName: string]: CSSProperties;
-    };
+    DEFAULT: CSSProperties;
+    LINE_NUMBERS: CSSProperties;
+    [tokenName: string]: CSSProperties;
 }
 export type Theme = BuiltInTheme | ThemeObject;
 
