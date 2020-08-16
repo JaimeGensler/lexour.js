@@ -1,4 +1,4 @@
-import getCodeLines from '../../utils/getCodeLines';
+import getCodeLines from '../../src/utils/getCodeLines';
 
 describe('getCodeLines()', () => {
     test('returns <string[]>, split by newline', () => {

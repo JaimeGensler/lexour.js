@@ -1,5 +1,8 @@
-import { isTypeAnnotation, getAnnotationType } from '../../utils/annotations';
-import { AnnotationType } from '../../types';
+import {
+    isTypeAnnotation,
+    getAnnotationType,
+} from '../../src/utils/annotations';
+import { AnnotationType } from '../../src/types';
 
 describe('Annotation Helpers:', () => {
     describe('isTypeAnnotation()', () => {

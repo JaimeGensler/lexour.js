@@ -1,4 +1,4 @@
-import getLineNumberString from '../../utils/getLineNumberString';
+import getLineNumberString from '../../src/utils/getLineNumberString';
 
 // describe('getLineNumberString() ', () => {
 //     test('dummy test', () => {
