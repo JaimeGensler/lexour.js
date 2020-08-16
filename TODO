@@ -1,24 +1,20 @@
 // FUNCTIONALITY //
 [_] Finish JavaScript Lexer
-[_] Complete token rendering
-[_] Figure out variable scope detection (maybe)
 [_] Add memories prop support
-[_] Add basic annotation support - comment annotations
 [_] Double check for accessibility / mobile-friendliness
 
 // FEATURES //
-[_] Add more annotation types (priority order: KEEP -> MARK AS -> NEXT LINE)
 [_] Allow basic prop passing (onClick, className, etc.)
-[_] Add indent detection and customization
+[_] Add indent detection and customization (?)
 [_] Write Lexers for other languages (priority order: JSX -> TS -> TSX -> HTML -> CSS -> other)
 [_] Add READ AS annotation
 
 // CODE MAINTENANCE //
-[_] Redo token naming conventions (& theme).
-[_] ??? Simplify Line component and add withLineNumbers HOC ???
+[_] Redo token naming conventions.
+[_] Push whitespace grabbing into other tokens.
+[_] Ask Jordan if there are any optimizations I realistically need to worry about
 
 // PACKAGE MAINTENANE //
-[_] Actually name the package
 [_] Add tags, licensce, keywords
 [_] Loosen React version requirement
 [_] ??? Move React to peer dependency ???
