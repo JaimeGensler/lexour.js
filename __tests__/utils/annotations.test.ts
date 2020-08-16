@@ -1,7 +1,7 @@
 import { isTypeAnnotation, getAnnotationType } from '../../utils/annotations';
 import { AnnotationType } from '../../types';
 
-describe('Annotation Helpers: ', () => {
+describe('Annotation Helpers:', () => {
     describe('isTypeAnnotation()', () => {
         test('returns TRUE if input string starts with "LEXOUR_"', () => {
             expect(isTypeAnnotation('LEXOUR_')).toBe(true);
