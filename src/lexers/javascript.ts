@@ -151,7 +151,7 @@ export default moo.states({
         CONSTANT_unknownRef: /[A-Z][_$A-Za-z0-9]*/,
         VARIABLE_unknownRef: new RegExp(validIdentifier),
 
-        EMPTYLINE: { match: /^[ \t]*\n^/, lineBreaks: true },
+        EMPTYLINE: { match: /^[ \t]*\n$/, lineBreaks: true },
         NEWLINE: { match: /\n/, lineBreaks: true },
         INDENTATION: /^[ \t]+/,
         WHITESPACE: /[ \t]+/,
