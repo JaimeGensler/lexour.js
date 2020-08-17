@@ -10,9 +10,10 @@ import KeepAnnotation from './KeepAnnotation';
 import MarkAsAnnotation from './MarkAsAnnotation';
 import Text from './Text';
 
+type LineNumbers = { current: number; next: number };
 export default function getTokens(
     lexer: Lexer,
-    lexerState: LexerState,
+    lineNumbers: LineNumbers,
 ): ReactNodeArray {
     return Array.from(lexer, ({ type, value, text, line, col }) => {
         // === Handle undefined tokens ===
@@ -31,7 +32,7 @@ export default function getTokens(
                     return <KeepAnnotation key={col} text={text} />;
 
                 case AnnotationType.NEXT_LINE:
-                    lexerState.line = getNextLineAnnotationNumber(value);
+                    lineNumbers.next = getNextLineAnnotationNumber(value);
                     return null;
 
                 case AnnotationType.MARK_AS:

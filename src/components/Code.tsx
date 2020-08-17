@@ -1,5 +1,4 @@
 import React, { useContext, ReactNodeArray } from 'react';
-import { LexerState } from 'moo';
 
 import LexerContext from './Contexts/LexerContext';
 import Line from './Line';
@@ -14,27 +13,21 @@ type Props = {
 export default function Code({ codeLines, showLineNumbers, firstLine }: Props) {
     const lexer = useContext(LexerContext);
 
-    let lexerState: LexerState = {
-        ...lexer.save(),
-        line: firstLine,
-    };
+    const lineNumbers = { current: -1, next: firstLine };
 
     const codeComponents: ReactNodeArray = codeLines.map(codeLine => {
-        const currentLine = lexerState.line;
-        lexer.reset(`${codeLine}\n`, lexerState);
+        lineNumbers.current = lineNumbers.next;
+        lineNumbers.next = lineNumbers.current + 1;
 
-        const tokens = getTokens(lexer, lexerState);
-
-        const nextLine = tokens.length ? lexerState.line + 1 : lexerState.line;
-
-        lexerState = { ...lexer.save(), line: nextLine };
+        lexer.reset(`${codeLine}\n`, lexer.save());
+        const tokens = getTokens(lexer, lineNumbers);
 
         // Skip line if there are no tokens to render (only contains annotations)
         return tokens.length === 0 ? null : (
             <Line
                 showLineNumbers={showLineNumbers}
-                lineNumber={currentLine}
-                key={currentLine}
+                lineNumber={lineNumbers.current}
+                key={lineNumbers.current}
             >
                 {tokens}
             </Line>
