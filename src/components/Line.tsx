@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { ReactNodeArray, CSSProperties } from 'react';
 import useTheme from '../utils/useTheme';
 import getLineNumberString from '../utils/getLineNumberString';
 
 type Props = {
     lineNumber: number;
     showLineNumbers: boolean;
-    children: React.ReactNodeArray;
+    children: ReactNodeArray;
+};
+
+const unselectable: CSSProperties = {
+    MozUserSelect: 'none',
+    WebkitUserSelect: 'none',
+    msUserSelect: 'none',
+    userSelect: 'none',
 };
 
 export default function Line({ lineNumber, showLineNumbers, children }: Props) {
@@ -15,7 +22,7 @@ export default function Line({ lineNumber, showLineNumbers, children }: Props) {
     // and right-aligned text? Or a table
 
     const lineNumComp = showLineNumbers ? (
-        <span style={{ margin: '0 1rem 0 0.25rem', ...style }}>
+        <span style={{ marginRight: '1rem', ...style, ...unselectable }}>
             {getLineNumberString(lineNumber)}
         </span>
     ) : null;
