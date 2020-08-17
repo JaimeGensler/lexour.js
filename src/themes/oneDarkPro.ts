@@ -5,8 +5,10 @@ export default {
         color: '#abb2bf',
         background: '#282c34',
     },
-    LINE_NUMBERS: {
-        color: '#5c6370',
+    LINE_NUMBER: {
+        style: {
+            color: '#5c6370',
+        },
     },
     string: {
         style: {
@@ -59,6 +61,14 @@ export default {
                 color: '#56b6c2',
                 fontWeight: 'bold',
             },
+        },
+    },
+    invalid: {
+        style: {
+            color: '#ffffff',
+            textDecorationStyle: 'wavy',
+            textDecorationLine: 'underline',
+            textDecorationColor: '#db0000',
         },
     },
 } as ThemeObject;

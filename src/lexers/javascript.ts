@@ -177,6 +177,8 @@ export default moo.states({
         'newline': { match: /\n/, lineBreaks: true },
         'indentation': /^[ \t]+/,
         'whitespace': /[ \t]+/,
+
+        'invalid': moo.error,
     },
     commentBlock: {
         comment: [
