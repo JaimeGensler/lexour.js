@@ -17,15 +17,15 @@ const unselectable: CSSProperties = {
 
 export default function Line({ lineNumber, showLineNumbers, children }: Props) {
     const style = useTheme('LINE_NUMBER');
-    // This isn't an optimal solution to spacing numbers correctly
-    // Maybe line numbers should get a fixed width based on the longest number
-    // and right-aligned text? Or a table
+    // Better spacing solutions:
+    // give line numbers fixed width and right-aligned text
+    // put elements in a table (there are many consequences of doing this)
 
-    const lineNumComp = showLineNumbers ? (
+    const lineNumComp = !showLineNumbers ? null : (
         <span style={{ marginRight: '1rem', ...style, ...unselectable }}>
             {getLineNumberString(lineNumber)}
         </span>
-    ) : null;
+    );
 
     return (
         <div>
