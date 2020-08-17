@@ -133,7 +133,8 @@ export default moo.states({
             '||',
             '!',
         ],
-        'literal.value': ['null', 'undefined', 'true', 'false'],
+        'literal.boolean': ['true', 'false'],
+        'literal.value': ['null', 'undefined'],
         // There are more ways of declaring numbers that I can account for reasonably easily
         'literal.number': /[\d]+(?:\.[\d]+)?/,
 
@@ -163,7 +164,7 @@ export default moo.states({
             withDestructuring('const') + validIdentifier,
         ),
 
-        'method__invocation': new RegExp(
+        'function.method__invocation': new RegExp(
             '(?<=\\.)' + validIdentifier + '(?=[ \\t]*\\(.*?)',
         ),
         'function__invocation': new RegExp(
