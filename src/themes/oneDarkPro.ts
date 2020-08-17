@@ -12,6 +12,11 @@ export default {
         style: {
             color: '#98c379',
         },
+        escape: {
+            style: {
+                color: '#56b6c2',
+            },
+        },
     },
     comment: {
         color: '#7f848e',
@@ -31,9 +36,6 @@ export default {
     },
     keyword: {
         color: '#c678dd',
-    },
-    stringEscape: {
-        color: '#56b6c2',
     },
     function: {
         color: '#61afef',

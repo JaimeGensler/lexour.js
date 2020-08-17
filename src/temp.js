@@ -6,8 +6,9 @@ const code = `
 const generalKenobi /*@ MARK \u2022 AS constant @*/ 'hello there';
 const generalKenobi = 'hello there';
 const someNumber = 50;
+"\\u2022"
 
-    //@ NEXT LINE 100
+//@ NEXT LINE 100
 hello
 `;
 const App = () => {
