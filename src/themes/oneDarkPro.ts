@@ -19,30 +19,46 @@ export default {
         },
     },
     comment: {
-        color: '#7f848e',
-        fontStyle: 'italic',
+        style: {
+            color: '#7f848e',
+            fontStyle: 'italic',
+        },
     },
     operator: {
-        color: '#56b6c2',
+        style: {
+            color: '#56b6c2',
+        },
     },
     literal: {
-        color: '#d19a66',
+        style: {
+            color: '#d19a66',
+        },
     },
     constant: {
-        color: '#e5c07b',
+        style: {
+            color: '#e5c07b',
+        },
     },
     variable: {
-        color: '#e06c75',
+        style: {
+            color: '#e06c75',
+        },
     },
     keyword: {
-        color: '#c678dd',
+        style: {
+            color: '#c678dd',
+        },
     },
     function: {
-        color: '#61afef',
-        fontWeight: 'bold',
-    },
-    method: {
-        color: '#56b6c2',
-        fontWeight: 'bold',
+        style: {
+            color: '#61afef',
+            fontWeight: 'bold',
+        },
+        method: {
+            style: {
+                color: '#56b6c2',
+                fontWeight: 'bold',
+            },
+        },
     },
 } as ThemeObject;
