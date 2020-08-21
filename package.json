@@ -1,11 +1,12 @@
 {
     "name": "lexourjs",
     "version": "0.0.1",
-    "description": "Syntax highlighter",
+    "description": "A React component for your code snippets",
     "main": "src/index.tsx",
     "scripts": {
-        "dev": "parcel src/index.html",
-        "test": "jest"
+        "dev": "next dev ./_docs",
+        "build": "next build ./_docs",
+        "start": "next start ./_docs"
     },
     "repository": {
         "type": "git",
@@ -17,16 +18,23 @@
     "author": "Jaime Gensler <jaimegensler0@gmail.com>",
     "license": "MIT",
     "dependencies": {
-        "moo": "^0.5.1",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "moo": "^0.5.1"
+    },
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "react-dom": ">=16.8.0"
     },
     "devDependencies": {
         "@types/jest": "^26.0.9",
         "@types/moo": "^0.5.3",
         "@types/react": "^16.9.43",
         "jest": "^26.2.2",
+        "next": "^9.5.2",
         "parcel-bundler": "^1.12.4",
+        "postcss-preset-env": "^6.7.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "tailwindcss": "^1.7.3",
         "ts-jest": "^26.1.4",
         "typescript": "^3.9.7"
     }
