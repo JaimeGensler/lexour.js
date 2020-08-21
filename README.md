@@ -22,8 +22,9 @@ including:
 -   **Toy language support!** If you build a lexer with **Moo**, you can pass it
     directly to the `lang` prop and see it in action straight away - no extra
     setup or config necessary.
--   **Only one dependency** ([Moo](moo)). Even better, Moo itself is tiny (4KB
-    minified + gzipped) and currently has **zero dependencies**.
+-   **Only one dependency** ([Moo](https://www.github.com/no-context/moo)). Even
+    better, Moo itself is tiny (4KB minified + gzipped) and currently has **zero
+    dependencies**.
 
 ## Installation
 
@@ -99,7 +100,6 @@ in its entirety to understand what sort of actions are and are not acceptable.
 Once you've done that, read the [guide on contributing](contributing). And
 again - thank you!
 
-[moo]: (https://github.com/no-context/moo)
 [conduct]: (./CODE_OF_CONDUCT.md)
 [contributing]: (./README.md)
 [lexer_explanation]: (./README.md)
