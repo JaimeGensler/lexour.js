@@ -1,19 +1,18 @@
 import React, { ReactNodeArray } from 'react';
-import { Lexer, LexerState } from 'moo';
+import { Lexer } from 'moo';
 import {
     isTypeAnnotation,
     getAnnotationType,
     getNextLineAnnotationNumber,
 } from '../../utils/annotations';
-import { AnnotationType } from '../../types';
+import { AnnotationType, LineTracker } from '../../types';
 import KeepAnnotation from './KeepAnnotation';
 import MarkAsAnnotation from './MarkAsAnnotation';
 import Text from './Text';
 
-type LineNumbers = { current: number; next: number };
 export default function getTokens(
     lexer: Lexer,
-    lineNumbers: LineNumbers,
+    lineTracker: LineTracker,
 ): ReactNodeArray {
     return Array.from(lexer, ({ type, value, text, line, col }) => {
         // === Handle undefined tokens ===
@@ -32,7 +31,7 @@ export default function getTokens(
                     return <KeepAnnotation key={col} text={text} />;
 
                 case AnnotationType.NEXT_LINE:
-                    lineNumbers.next = getNextLineAnnotationNumber(value);
+                    lineTracker.jumpTo(getNextLineAnnotationNumber(value));
                     return null;
 
                 case AnnotationType.MARK_AS:

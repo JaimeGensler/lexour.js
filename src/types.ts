@@ -21,3 +21,9 @@ export enum AnnotationType {
     NEXT_LINE = 'NEXT_LINE',
     MARK_AS = 'MARK',
 }
+
+export interface LineTracker {
+    getCurrent: () => number;
+    advance: () => void;
+    jumpTo: (nextLine: number) => void;
+}

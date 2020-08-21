@@ -10,6 +10,8 @@ const someNumber = 50;
 
 //@ NEXT LINE 100
 hello
+test.split(' ');
+split(' ')
 `;
 const App = () => {
     return (
