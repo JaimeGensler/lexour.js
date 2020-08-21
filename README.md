@@ -22,9 +22,8 @@ including:
 -   **Toy language support!** If you build a lexer with **Moo**, you can pass it
     directly to the `lang` prop and see it in action straight away - no extra
     setup or config necessary.
--   **Only one dependency** ([Moo](https://www.github.com/no-context/moo)). Even
-    better, Moo itself is tiny (4KB minified + gzipped) and currently has **zero
-    dependencies**.
+-   **Only one dependency** ([Moo][moo]. Even better, Moo itself is tiny (4KB
+    minified + gzipped) and currently has **zero dependencies**.
 
 ## Installation
 
@@ -78,28 +77,29 @@ return <CodeBlock lang="ts" code={code} showLineNumbers firstLine={43} />;
 ```
 
 And those are just the very basics. For full documentation, please check out
-[the docs site](https://JaimeGensler.github.io/lexour). It includes all the
-information you'll need, including info about annotations (_ooo_), themes
-(_aaah_), toy languages (_whaaat_), and more (_wowee_)! It also
-[provides some information](lexer_explanation) about how lexour works under the
-hood, **which is probably where you want to look if it seems like a token is of
-the wrong type**.
+[the docs site][docs]. It includes all the information you'll need, including
+info about annotations (_ooo_), themes (_aaah_), toy languages (_whaaat_), and
+more (_wowee_)! It also [provides some information][lexer_explanation] about how
+lexour works under the hood, **which is probably where you want to look if it
+seems like a token is of the wrong type**.
 
 It should be noted here that **lexour is only a lexer**. It does not parse the
 input code or generate an AST, and it _certainly_ does not run it. As such,
 lexour has no way of knowing if your input represents a valid chunk of code (and
 you probably don't want it to, either). Valid code will always be more-or-less
-displayed as expected ([read why it's more-or-less](lexer_explanation)), but
+displayed as expected ([read why it's more-or-less][lexer_explanation]), but
 invalid code will either appear as valid or be marked as invalid, depending on
 the language and the input code.
 
 ## Contributing
 
-If you'd like to contribute, thanks! First read the [code of conduct](conduct)
+If you'd like to contribute, thanks! First read the [code of conduct][conduct]
 in its entirety to understand what sort of actions are and are not acceptable.
-Once you've done that, read the [guide on contributing](contributing). And
+Once you've done that, read the [guide on contributing][contributing]. And
 again - thank you!
 
-[conduct]: (./CODE_OF_CONDUCT.md)
-[contributing]: (./README.md)
-[lexer_explanation]: (./README.md)
+[moo]: https://www.github.com/no-context/moo
+[docs]: ./README.md
+[conduct]: ./CODE_OF_CONDUCT.md
+[contributing]: ./README.md
+[lexer_explanation]: ./README.md
