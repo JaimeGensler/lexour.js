@@ -14,8 +14,8 @@
     "keywords": [
         "tbd"
     ],
-    "author": "Jaime Gensler",
-    "license": "UNLICENSED",
+    "author": "Jaime Gensler <jaimegensler0@gmail.com>",
+    "license": "MIT",
     "dependencies": {
         "moo": "^0.5.1",
         "react": "^16.13.1",

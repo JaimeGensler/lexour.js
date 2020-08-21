@@ -28,3 +28,5 @@
 // NOTES //
 Consider other possibly ways to format theme JSONs
     - the current format is a little overkill/repetative
+
+Absolute minimum React version is 16.8 (hooks introduction), possibly needs a later version
