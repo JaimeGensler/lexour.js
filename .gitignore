@@ -1,4 +1,12 @@
+# Dev
 node_modules/
 coverage/
+
+# Dist
 dist/
 .cache/
+
+# Docs
+# _docs/
+_docs/.next/
+tailwind.config.js
