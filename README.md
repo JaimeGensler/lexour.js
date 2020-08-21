@@ -2,13 +2,13 @@
 
 # lexour.js
 
-A React component to display your code snippets! Coming soon to a package
-manager near you.
+A React component for your code snippets! Coming soon to a package manager near
+you.
 
 ### Features
 
 The goal of lexour is to provide a simple, intuitive, and highly customizable
-code highlighting component - no config, no insane child map to pass, just
+syntax highlighting component - no config, no insane child map to pass, just
 simple (and powerful) syntax highlighting. lexour includes a number of features,
 including:
 
@@ -22,7 +22,7 @@ including:
 -   **Toy language support!** If you build a lexer with **Moo**, you can pass it
     directly to the `lang` prop and see it in action straight away - no extra
     setup or config necessary.
--   **Only one dependency** ([Moo][moo]. Even better, Moo itself is tiny (4KB
+-   **Only one dependency** ([Moo!][moo]). Even better, Moo itself is tiny (4KB
     minified + gzipped) and currently has **zero dependencies**.
 
 ## Installation
