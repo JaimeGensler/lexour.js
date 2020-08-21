@@ -1,5 +1,6 @@
 import React from 'react';
 import useTheme from '../../utils/useTheme';
+import { cleanKeepAnnotationText } from '../../utils/annotations';
 
 type Props = { text: string };
 export default function KeepAnnotation({ text }: Props) {
@@ -7,7 +8,7 @@ export default function KeepAnnotation({ text }: Props) {
 
     return (
         <span className="lexour.annotation" style={style}>
-            {text.replace(/KEEP[ \t]/, '')}
+            {cleanKeepAnnotationText(text)}
         </span>
     );
 }

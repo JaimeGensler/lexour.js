@@ -52,3 +52,7 @@ export function getNextLineAnnotationNumber(value: string): number {
     }
     return nextLine;
 }
+
+export function cleanKeepAnnotationText(text: string): string {
+    return text.replace(/KEEP[ \t]/, '');
+}

@@ -6,6 +6,18 @@ interface Acc {
     [other: string]: any;
 }
 
+// This has an unintended side effect:
+// {
+//     string: {
+//         escape: {...}
+//     }
+//     escape: {...}
+// }
+// Given a token style structure like above, when trying to get styles for a
+// token like string.escape, if the string object isn't found the first iteration,
+// it'll still grab the unrelated escape token styles
+// Tokens shouldn't ever have conflicting names, but you never know
+
 export default function useTheme(tokenType: string): CSSProperties {
     const theme = useContext(ThemeContext);
     return (
