@@ -1,18 +1,18 @@
 # THIS README IS A WORK IN PROGRESS - MANY LINKS DON'T WORK AND THE PACKAGE IS NOT YET ON NPM
 
-# lexour.js
+# lexour
 
 A React component for your code snippets! Coming soon to a package manager near
 you.
 
 ### Features
 
-The goal of lexour is to provide a simple, intuitive, and highly customizable
-syntax highlighting component - no config, no insane child map to pass, just
-simple (and powerful) syntax highlighting. lexour includes a number of features,
-including:
+lexour provides a simple, intuitive, and highly customizable syntax highlighting
+component: no config, no insane child map to pass - just simple, easily
+customizable syntax highlighting. It includes a number of features out of the
+box, including:
 
--   **Accessible, mobile friendly, and cross-browser support.**
+-   **Accessible, mobile friendly cross-browser support.**
 -   **Built-in type support!** Lexour is built entirely in TypeScript, but you
     can stick with plain ol' JSX if you prefer.
 -   **Annotations!** Likely the most useful and powerful part of lexour,
