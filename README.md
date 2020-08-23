@@ -44,16 +44,12 @@ of hooks), so you'll want to double check that as well.
 
 ## Quick Start
 
-To use lexour, you'll need to import the component:
+To use lexour, you'll need to import the exposed component. The component only
+requires two props be passed - a language (lang), and the code to be tokenized.
 
 ```jsx
 import CodeBlock from 'lexour';
-```
 
-The `CodeBlock` component only requires two props be passed - a language (to use
-the correct lexer), and the code to be tokenized.
-
-```jsx
 const myCode = `
 const myMessage = "Hello, world!";
 console.log(myMessage);
