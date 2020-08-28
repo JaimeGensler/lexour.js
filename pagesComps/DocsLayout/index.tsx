@@ -9,9 +9,9 @@ export default function withDocsLayout(Page: () => JSX.Element, title: string) {
                 <Head>
                     <title>{title}</title>
                 </Head>
-                <div className="w-full h-screen overflow-hidden">
+                <div className="w-full h-screen">
                     <Header />
-                    <div className="flex h-full">
+                    <div className="flex h-full pt-16">
                         <Nav />
                         <main className="flex-1 text-lg px-12 py-8 h-full overflow-y-scroll">
                             <Page />

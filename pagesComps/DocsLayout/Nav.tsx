@@ -1,6 +1,6 @@
 export default function Nav() {
     return (
-        <nav className="h-screen bg-white flex-0 px-8 py-4 border-r border-gray-300">
+        <nav className="h-full bg-white flex-0 px-8 py-4 border-r border-gray-300">
             <ol>
                 <li>
                     <h2>Home</h2>
