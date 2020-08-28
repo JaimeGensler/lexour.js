@@ -1,9 +1,8 @@
 import Row from './Row';
 import propsList from './propsList';
 
+const rows = propsList.map(prop => <Row {...prop} key={prop.name} />);
 export default function PropsTable() {
-    const rows = propsList.map(prop => <Row {...prop} key={prop.name} />);
-
     return (
         <table className="table-auto text-base">
             <thead>

@@ -1,5 +1,4 @@
 import PropsTable from './Table';
-import themes from '../../src/themes';
 import TypeExplanation from './TypeExplanation';
 
 export default function PropsPageContent() {
@@ -38,72 +37,8 @@ export default function PropsPageContent() {
                 numbers are not selectable text (on any browser), and are not
                 added to the raw "code" input, so you can safely select and copy
                 only the code, or add copy-on-click functionality, without line
-                numbers breaking the input.
+                numbers affecting the result.
             </p>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eveniet, saepe nisi doloremque explicabo ullam ea itaque nostrum
-                minus deleniti eos accusamus distinctio aspernatur sit. Delectus
-                excepturi minima exercitationem atque ab? Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit. Eveniet, saepe nisi
-                doloremque explicabo ullam ea itaque nostrum minus deleniti eos
-                accusamus distinctio aspernatur sit. Delectus excepturi minima
-                exercitationem atque ab? Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Eveniet, saepe nisi doloremque explicabo ullam
-                ea itaque nostrum minus deleniti eos accusamus distinctio
-                aspernatur sit. Delectus excepturi minima exercitationem atque
-                ab? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eveniet, saepe nisi doloremque explicabo ullam ea itaque nostrum
-                minus deleniti eos accusamus distinctio aspernatur sit. Delectus
-                excepturi minima exercitationem atque ab? Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit. Eveniet, saepe nisi
-                doloremque explicabo ullam ea itaque nostrum minus deleniti eos
-                accusamus distinctio aspernatur sit. Delectus excepturi minima
-                exercitationem atque ab? Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Eveniet, saepe nisi doloremque explicabo ullam
-                ea itaque nostrum minus deleniti eos accusamus distinctio
-                aspernatur sit. Delectus excepturi minima exercitationem atque
-                ab? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eveniet, saepe nisi doloremque explicabo ullam ea itaque nostrum
-                minus deleniti eos accusamus distinctio aspernatur sit. Delectus
-                excepturi minima exercitationem atque ab? Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit. Eveniet, saepe nisi
-                doloremque explicabo ullam ea itaque nostrum minus deleniti eos
-                accusamus distinctio aspernatur sit. Delectus excepturi minima
-                exercitationem atque ab? Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Eveniet, saepe nisi doloremque explicabo ullam
-                ea itaque nostrum minus deleniti eos accusamus distinctio
-                aspernatur sit. Delectus excepturi minima exercitationem atque
-                ab? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eveniet, saepe nisi doloremque explicabo ullam ea itaque nostrum
-                minus deleniti eos accusamus distinctio aspernatur sit. Delectus
-                excepturi minima exercitationem atque ab? Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit. Eveniet, saepe nisi
-                doloremque explicabo ullam ea itaque nostrum minus deleniti eos
-                accusamus distinctio aspernatur sit. Delectus excepturi minima
-                exercitationem atque ab? Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Eveniet, saepe nisi doloremque explicabo ullam
-                ea itaque nostrum minus deleniti eos accusamus distinctio
-                aspernatur sit. Delectus excepturi minima exercitationem atque
-                ab? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eveniet, saepe nisi doloremque explicabo ullam ea itaque nostrum
-                minus deleniti eos accusamus distinctio aspernatur sit. Delectus
-                excepturi minima exercitationem atque ab? Lorem ipsum dolor sit,
-                amet consectetur adipisicing elit. Eveniet, saepe nisi
-                doloremque explicabo ullam ea itaque nostrum minus deleniti eos
-                accusamus distinctio aspernatur sit. Delectus excepturi minima
-                exercitationem atque ab? Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit. Eveniet, saepe nisi doloremque explicabo ullam
-                ea itaque nostrum minus deleniti eos accusamus distinctio
-                aspernatur sit. Delectus excepturi minima exercitationem atque
-                ab? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Eveniet, saepe nisi doloremque explicabo ullam ea itaque nostrum
-                minus deleniti eos accusamus distinctio aspernatur sit. Delectus
-                excepturi minima exercitationem atque ab?
-            </p>
-            <p>Sup</p>
-            <p>Sup again</p>
-            <p>END</p>
         </div>
     );
 }
