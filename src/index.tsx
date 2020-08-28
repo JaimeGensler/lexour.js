@@ -12,14 +12,18 @@ type Props = {
     code: string;
     lang: Lang;
 
+    style?: React.CSSProperties;
     theme?: Theme;
     firstLine?: number;
     showLineNumbers?: boolean;
 };
 
+// Style and other HTML prop passing should probably be done differently
 export default function CodeBlock({
     code,
     lang,
+
+    style = {},
     theme = 'oneDarkPro',
     showLineNumbers = false,
     firstLine = 1,
@@ -31,7 +35,7 @@ export default function CodeBlock({
     return (
         <ThemeContext.Provider value={themeObject}>
             <LexerContext.Provider value={lexer}>
-                <pre style={{ margin: 0, ...themeObject.DEFAULT }}>
+                <pre style={{ margin: 0, ...themeObject.DEFAULT, ...style }}>
                     <Code
                         codeLines={codeLines}
                         firstLine={firstLine}
