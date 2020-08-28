@@ -1,4 +1,6 @@
 import PropsTable from './Table';
+import themes from '../../src/themes';
+import TypeExplanation from './TypeExplanation';
 
 export default function PropsPageContent() {
     return (
@@ -9,21 +11,34 @@ export default function PropsPageContent() {
                 custom props that may be passed.
             </p>
             <PropsTable />
+            <div>
+                <TypeExplanation
+                    typeName="BuiltInLang"
+                    values={[
+                        '"html"',
+                        '"css"',
+                        '"javascript"/"js"',
+                        '"typescript"/"ts"',
+                        '"jsx"',
+                        '"tsx"',
+                    ]}
+                />
+                <p>
+                    <strong>React code must be passed in as JSX or TSX</strong>{' '}
+                    - using JS or TS as the lang will result in incorrectly
+                    tokenized code.
+                </p>
+            </div>
+            <TypeExplanation
+                typeName="BuiltInTheme"
+                values={['"oneDarkPro"', '"githubLight"']}
+            />
             <p>
-                The <code className="text-yellow-600">BuiltInLang</code> type
-                currently has possible values of <code>"javascript"</code> (or{' '}
-                <code>"js"</code>), <code>"typescript"</code> (or{' '}
-                <code>"ts"</code>), <code>"jsx"</code>, <code>"tsx"</code>,{' '}
-                <code>"html"</code>, <code>"css"</code>.{' '}
-                <strong>
-                    React syntax must be parsed as JSX or TSX - using JS or TS
-                    as the lang will result in incorrectly tokenized code.
-                </strong>
-            </p>
-            <p>
-                The <code className="text-yellow-600">BuiltInTheme</code> type
-                currently has possible values of <code>"oneDarkPro"</code>,{' '}
-                <code>"githubLight"</code>.
+                Lexour will handle a couple details of rendering for you - line
+                numbers are not selectable text (on any browser), and are not
+                added to the raw "code" input, so you can safely select and copy
+                only the code, or add copy-on-click functionality, without line
+                numbers breaking the input.
             </p>
             <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -86,6 +101,9 @@ export default function PropsPageContent() {
                 minus deleniti eos accusamus distinctio aspernatur sit. Delectus
                 excepturi minima exercitationem atque ab?
             </p>
+            <p>Sup</p>
+            <p>Sup again</p>
+            <p>END</p>
         </div>
     );
 }
