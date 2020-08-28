@@ -4,9 +4,9 @@
     "description": "A React component for your code snippets",
     "main": "src/index.tsx",
     "scripts": {
-        "dev": "next dev ./_docs",
-        "build": "next build ./_docs",
-        "start": "next start ./_docs"
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
     },
     "repository": {
         "type": "git",
@@ -18,7 +18,8 @@
     "author": "Jaime Gensler <jaimegensler0@gmail.com>",
     "license": "MIT",
     "dependencies": {
-        "moo": "^0.5.1"
+        "moo": "^0.5.1",
+        "@types/moo": "^0.5.3"
     },
     "peerDependencies": {
         "react": ">=16.8.0",
@@ -26,7 +27,6 @@
     },
     "devDependencies": {
         "@types/jest": "^26.0.9",
-        "@types/moo": "^0.5.3",
         "@types/react": "^16.9.43",
         "jest": "^26.2.2",
         "next": "^9.5.2",
