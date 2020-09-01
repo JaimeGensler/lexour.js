@@ -6,7 +6,7 @@ export default [
     },
     {
         title: 'Quick Start',
-        pageURL: '/get-started',
+        pageURL: '/docs/get-started',
         subItems: [
             { title: 'Installation', id: 'install' },
             { title: 'Basic Usage', id: 'basic-usage' },
@@ -14,12 +14,12 @@ export default [
     },
     {
         title: 'Lexing Rules',
-        pageURL: '/lexing-rules',
+        pageURL: '/docs/lexing-rules',
         subItems: [],
     },
     {
         title: 'Props',
-        pageURL: '/props',
+        pageURL: '/docs/props',
         subItems: [
             { title: 'CodeBlock props', id: 'props' },
             { title: 'Special Prop Types', id: 'types' },
@@ -27,7 +27,7 @@ export default [
     },
     {
         title: 'Annotations',
-        pageURL: '/annotations',
+        pageURL: '/docs/annotations',
         subItems: [
             { title: 'Comment', id: 'comment' },
             { title: 'Keep', id: 'keep' },
@@ -36,13 +36,18 @@ export default [
         ],
     },
     {
+        title: 'Custom Theme Support',
+        pageURL: '/docs/custom-theme-support',
+        subItems: [],
+    },
+    {
         title: 'Custom Language Support',
-        pageURL: '/custom-language-support',
+        pageURL: '/docs/custom-language-support',
         subItems: [{ title: 'Contributing', id: 'contributing' }],
     },
     {
-        title: 'Custom Theme Support',
-        pageURL: '/custom-theme-support',
-        subItems: [],
+        title: 'Contributing',
+        pageURL: '/docs/contributing',
+        subItems: [{ title: 'Language', id: 'contributing' }],
     },
 ];
