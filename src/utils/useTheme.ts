@@ -25,7 +25,7 @@ export default function useTheme(tokenType: string): CSSProperties {
             .replace(/__[A-Za-z1-9]+?$/, '')
             .split('.')
             .reduce(
-                (acc: Acc, nested) => acc[nested as keyof typeof acc] ?? acc,
+                (acc: Acc, nested: keyof typeof acc) => acc[nested] ?? acc,
                 theme,
             ).style ?? {}
     );
