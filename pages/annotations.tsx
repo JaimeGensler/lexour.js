@@ -1,4 +1,5 @@
-import AnnotationsContent from '../pagesComps/Annotations';
+import AnnotationsContent from '../pagesComps/Docs/Annotations';
+
 export default function Annotations() {
     return <AnnotationsContent />;
 }

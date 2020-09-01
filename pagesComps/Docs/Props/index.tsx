@@ -1,13 +1,16 @@
 import PropsTable from './Table';
 import TypeExplanation from './TypeExplanation';
+import Header from '../../utils/Header';
 
 export default function PropsContent() {
     return (
-        <div className="space-y-4">
-            <p>
-                lexour's <code>{'<CodeBlock />'}</code> component has a few
-                custom props that may be passed.
-            </p>
+        <>
+            <Header title="Props">
+                <p>
+                    lexour's <code>{'<CodeBlock />'}</code> component has a few
+                    custom props that may be passed.
+                </p>
+            </Header>
             <PropsTable />
             <div>
                 <TypeExplanation
@@ -38,6 +41,6 @@ export default function PropsContent() {
                 only the code, or add copy-on-click functionality, without line
                 numbers affecting the result.
             </p>
-        </div>
+        </>
     );
 }

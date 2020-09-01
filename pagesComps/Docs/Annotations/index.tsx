@@ -1,13 +1,15 @@
-import Section from './Section';
+import Header from '../../utils/Header';
 
 export default function AnnotationsContent() {
     return (
         <>
-            <p>
-                Annotations are information for **lexour** that are included in
-                the code block itself. They are essentially meta-comments, and
-                will not be included in the final rendering.
-            </p>
+            <Header title="Annotations">
+                <p>
+                    Annotations are information for lexour that are included in
+                    the code block itself. They are essentially meta-comments,
+                    and will not be included in the final rendering.
+                </p>
+            </Header>
         </>
     );
 }

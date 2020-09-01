@@ -1,4 +1,4 @@
-import Section from './Section';
+import Section from '../../utils/Section';
 import Awaiting from './Awaiting';
 
 export default function Comment() {

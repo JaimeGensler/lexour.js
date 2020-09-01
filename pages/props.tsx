@@ -1,5 +1,5 @@
-import PropsPageContent from '../pagesComps/Props';
+import PropsContent from '../pagesComps/Docs/Props';
 
 export default function Props() {
-    return <PropsPageContent />;
+    return <PropsContent />;
 }

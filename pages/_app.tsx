@@ -21,5 +21,5 @@ export default function App({ Component, pageProps }: AppProps) {
         </>
     );
 
-    return isHome ? page : <DocsLayout title={pageTitle}>{page}</DocsLayout>;
+    return isHome ? page : <DocsLayout>{page}</DocsLayout>;
 }
