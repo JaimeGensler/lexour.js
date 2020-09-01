@@ -1,4 +1,6 @@
 import Header from '../../utils/Header';
+import Comment from './Comment';
+import Keep from './Keep';
 
 export default function AnnotationsContent() {
     return (
@@ -10,24 +12,11 @@ export default function AnnotationsContent() {
                     and will not be included in the final rendering.
                 </p>
             </Header>
+            <Comment />
+            <Keep />
         </>
     );
 }
-
-const code1 = `
-function doubleElementsInArray(initialArray) {
-    /*@ The following code is intentionally not DRY! @*/
-    /*@ The DRY code is shown in the future. @*/
-
-    // This function takes an input array, and returns
-    // a new array with all of the elements doubled!
-    const newArray = [];
-    initialArray.forEach(element => {
-        newArray.push(element * 2);
-    });
-    return newArray;
-}
-`;
 
 // ### KEEP Annotations
 

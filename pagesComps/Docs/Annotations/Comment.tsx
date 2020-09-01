@@ -1,6 +1,21 @@
 import Section from '../../utils/Section';
 import Awaiting from './Awaiting';
 
+const code1 = `
+function doubleElementsInArray(initialArray) {
+    /*@ The following code is intentionally not DRY! @*/
+    /*@ The DRY code is shown in the future. @*/
+
+    // This function takes an input array, and returns
+    // a new array with all of the elements doubled!
+    const newArray = [];
+    initialArray.forEach(element => {
+        newArray.push(element * 2);
+    });
+    return newArray;
+}
+`;
+
 export default function Comment() {
     return (
         <Section title="Comment Annotations" id="comment">
