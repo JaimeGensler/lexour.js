@@ -1,4 +1,4 @@
-import { ExternalLink as Link } from '../../utils/Link';
+import { ExLink } from '../../utils/Link';
 
 export default function Features() {
     return (
@@ -35,12 +35,12 @@ export default function Features() {
                 </li>
                 <li>
                     <strong>Only one dependency</strong> (
-                    <Link
+                    <ExLink
                         href="https://www.github.com/no-context/moo"
                         title="View Moo on Github"
                     >
                         Moo
-                    </Link>
+                    </ExLink>
                     ). Even better, Moo itself is tiny (4KB minified + gzipped)
                     and currently has zero dependencies.
                 </li>
