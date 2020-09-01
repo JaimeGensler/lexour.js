@@ -1,10 +1,9 @@
 import PropsTable from './Table';
 import TypeExplanation from './TypeExplanation';
 
-export default function PropsPageContent() {
+export default function PropsContent() {
     return (
         <div className="space-y-4">
-            <h1 className="font-bold text-3xl">Props</h1>
             <p>
                 lexour's <code>{'<CodeBlock />'}</code> component has a few
                 custom props that may be passed.
