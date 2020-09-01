@@ -27,3 +27,9 @@ body h6 {
 .font-smallcaps {
     font-variant: small-caps;
 }
+.visible-on-focus {
+    transform: translateY(-999px);
+}
+.visible-on-focus:focus {
+    transform: translateY(0);
+}

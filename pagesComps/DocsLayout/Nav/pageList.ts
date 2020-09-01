@@ -36,9 +36,9 @@ export default [
         ],
     },
     {
-        title: 'Toy Language Support',
-        pageURL: '/toy-language-support',
-        subItems: [],
+        title: 'Custom Language Support',
+        pageURL: '/custom-language-support',
+        subItems: [{ title: 'Contributing', id: 'contributing' }],
     },
     {
         title: 'Custom Theme Support',
