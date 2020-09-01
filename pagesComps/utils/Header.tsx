@@ -6,7 +6,7 @@ type Props = {
 };
 export default function Header({ title, children }: Props) {
     return (
-        <header>
+        <header id="content-top">
             <h1 className="font-bold text-3xl">{title}</h1>
             {children}
         </header>
