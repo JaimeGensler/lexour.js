@@ -1,4 +1,4 @@
-import GithubIcon from '../util/GithubIcon';
+import GithubIcon from '../utils/GithubIcon';
 
 export default function Github() {
     return (

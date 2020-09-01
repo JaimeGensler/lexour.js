@@ -1,4 +1,4 @@
-import { ExternalLink as Link } from '../../util/Link';
+import { ExternalLink as Link } from '../../utils/Link';
 
 export default function Features() {
     return (

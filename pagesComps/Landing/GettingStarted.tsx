@@ -1,4 +1,4 @@
-import CodeBlock from '../util/CodeBlock';
+import CodeBlock from '../utils/CodeBlock';
 
 const packageInstall = `
 // For NPM users:
