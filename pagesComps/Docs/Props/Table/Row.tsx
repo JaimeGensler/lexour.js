@@ -1,3 +1,5 @@
+import TypeName from '../TypeName';
+
 type Props = {
     required: boolean;
     name: string;
@@ -30,7 +32,7 @@ export default function Row({
                 <code>{name}</code>
             </td>
             <td className="border px-2 py-1">
-                <code className="text-yellow-600">{type}</code>
+                <TypeName>{type}</TypeName>
             </td>
             <td className="border px-2 py-1 text-center">
                 <code

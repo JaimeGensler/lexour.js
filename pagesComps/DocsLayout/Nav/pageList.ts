@@ -21,8 +21,8 @@ export default [
         title: 'Props',
         pageURL: '/docs/props',
         subItems: [
-            { title: 'CodeBlock props', id: 'props' },
-            { title: 'Special Prop Types', id: 'types' },
+            { title: 'Custom Props', id: 'custom-props' },
+            { title: 'Standard Props', id: 'standard-props' },
         ],
     },
     {

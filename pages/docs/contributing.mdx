@@ -1,0 +1,36 @@
+import Conduct from '../../pagesComps/Docs/Contributing/Conduct';
+import { InLink, ExLink } from '../../pagesComps/utils/Link';
+import { EM } from '../../pagesComps/DocsLayout/MDXComps/Texts';
+const moo = 'https://github.com/no-context/moo';
+const lexp = '/docs/lexer-explanation';
+const lang = '/docs/custom-language-support';
+
+# Contributing
+
+This page includes guidelines for adding issues to lexour's github page as well
+as submitting pull requests to lexour. If you're looking to contribute to lexour
+(either thru a PR or an issue), thank you! It means the world to me!
+
+<Conduct />
+
+## Creating Issues (issues)
+
+## General Pull Request Guidelines (general)
+
+## Language-related Pull Requests (language)
+
+If you've built a tokenizer for a language not already included in lexour,
+you're welcome to submit a pull request! At present, for a language-support
+request to be approved, it must:
+
+-   Follow the <InLink href="#general">general contribution guidelines</InLink>.
+-   Be written using <ExLink href={moo}>Moo</ExLink>. &#32;
+    <EM>PRs that add new dependencies to tokenize code won't be approved</EM>.
+-   Be complete. You'll likely need to make reasonable assumptions about how the
+    language is used - read the &#32;
+    <InLink href={lexp}>lexer explanation</InLink> to get an idea of assumptions
+    that are made for JavaScript/TypeScript.
+-   Include support for lexour annotations.
+-   Be for a **\_FIND A WORD FOR THIS\_** language. PRs to add your toy language
+    won't be approved, but lexour still has built-in &#32;
+    <InLink href={lang}>support for your language</InLink>!

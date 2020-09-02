@@ -1,0 +1,38 @@
+import PropsTable from '../../pagesComps/Docs/Props/Table';
+import TypeName from '../../pagesComps/Docs/Props/TypeName';
+
+# Props
+
+lexour's `<CodeBlock />` component accepts a few custom props, as well as many
+standard props. This page details how you can use both the props unique to
+lexour, as well as built-in props to style your codeblock.
+
+## Custom Props (custom-props)
+
+Hello there
+
+<PropsTable />
+
+The type <TypeName>BuiltInLang</TypeName> currently has possible values of:
+
+-   `"html"`
+-   `"css"`
+
+**React code must be passed as JSX or TSX** - using JS or TS for React will
+result in incorrectly tokenized code.
+
+---
+
+The type <TypeName>BuiltInTheme</TypeName> currently has possible values of
+
+-   `"oneDarkPro"`
+-   `"githubLight"`
+
+Lexour will handle a couple details of rendering for you - line numbers are not
+selectable text (on any browser), and are not added to the raw "code" input, so
+you can safely select and copy only the code, or add copy-on-click
+functionality, without line numbers affecting the result.
+
+## Standard Props (standard-props)
+
+General Kenobi
