@@ -1,6 +1,8 @@
-import javascriptLexer from './javascript';
+import javascript from './javascript';
+import html from './html';
 
 export default {
-    javascript: javascriptLexer,
-    js: javascriptLexer,
+    javascript,
+    js: javascript,
+    html,
 };

@@ -71,4 +71,31 @@ export default {
             textDecorationColor: '#db0000',
         },
     },
+    tag: {
+        name: {
+            style: {
+                color: '#e06c75',
+            },
+        },
+        attribute: {
+            style: {
+                color: '#d19a66',
+            },
+            id: {
+                style: {
+                    color: '#61afef',
+                },
+            },
+        },
+    },
+    text: {
+        escape: {
+            style: {
+                color: '#e06c75',
+            },
+        },
+        style: {
+            color: '#abb2bf',
+        },
+    },
 } as ThemeObject;

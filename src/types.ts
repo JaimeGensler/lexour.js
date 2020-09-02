@@ -10,6 +10,7 @@ export interface ThemeObject {
 export type Theme = BuiltInTheme | ThemeObject;
 
 export type BuiltInLang =
+    | 'html'
     | 'javascript'
     | 'js' /* | 'typescript' | 'ts' | 'jsx' | 'tsx'*/;
 export type Lang = BuiltInLang | Lexer;
