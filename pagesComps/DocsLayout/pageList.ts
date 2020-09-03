@@ -48,6 +48,10 @@ export default [
     {
         title: 'Contributing',
         pageURL: '/docs/contributing',
-        subItems: [{ title: 'Language', id: 'contributing' }],
+        subItems: [
+            { title: 'Creating Issues', id: 'issues' },
+            { title: 'PR Guidelines', id: 'general-prs' },
+            { title: 'Language PRs', id: 'language-prs' },
+        ],
     },
 ];

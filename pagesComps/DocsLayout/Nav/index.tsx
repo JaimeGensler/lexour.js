@@ -1,4 +1,4 @@
-import pageList from './pageList';
+import pageList from '../pageList';
 import NavItem from './NavItem';
 
 const linkList = pageList.map(page => <NavItem {...page} key={page.title} />);
