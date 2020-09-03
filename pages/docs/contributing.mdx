@@ -10,7 +10,7 @@ const lang = '/docs/custom-language-support';
 
 This page includes guidelines for adding issues to lexour's github page as well
 as submitting pull requests to lexour. If you're looking to contribute to lexour
-(either thru a PR or an issue), thank you! It means the world to me!
+(either with a PR or an issue), thank you so much!
 
 <Conduct />
 
@@ -27,22 +27,40 @@ following information:
 -   Nature of the issue (tokenization, annotations, accessibility, mobile-use,
     browser support, et cetera).
 -   A description of the issue, including steps to recreate it, the expected
-    behavior, and other relevent information (browser/device, language).
+    behavior, and other information relevent to your issue (browser/device,
+    language).
 
-Issues around accessibility and tokenizing will be resolved as quickly as
-possible.
+## General Pull Request Guidelines (general-prs)
 
-## General Pull Request Guidelines (general)
+Pull requests are welcome for any part of the repository - tests, the package
+itself, or the docs! Here are some guidelines to follow before making your pull
+request:
 
-## Language Pull Requests (language)
+-   **ALL** PRs must use TypeScript. PRs using JavaScript without good reason
+    will be mercilessly (and gleefully) destroyed.
+-   PRs must be formatted with prettier (prettier config is included in the
+    repository).
+-   Avoid adding dependencies. PRs with dependencies may still be approved, but
+    are not preferred. Dev dependencies for the docs/testing are no problem!
+-   Short PRs may be self-explanatory, but larger PRs should offer some
+    explanation of the changes made.
+-   If your PR adds new features or changes existing functionality, you don't
+    have to update the docs yourself, but you should provide enough information
+    that it is easy for others to do so.
+
+Other than that, have at it! If your PR changes/adds functionality, you don't
+have to update the docs yourself, but you should provide enough information that
+it is easy for others to do so.
+
+## Language Pull Requests (language-prs)
 
 If you've built a tokenizer for a language not already included in lexour,
 you're welcome to submit a pull request! At present, for a language-support
 request to be approved, it must:
 
--   Follow the <InLink href="#general">general contribution guidelines</InLink>.
+-   Follow the general contribution guidelines.
 -   Be written using <ExLink href={moo}>Moo</ExLink>. _PRs that add new
-    dependencies to tokenize code won't be approved_.
+    dependencies to tokenize code will not be approved_.
 -   Be complete, including:
 
     <NestedUL>
@@ -57,11 +75,27 @@ request to be approved, it must:
         </LI>
     </NestedUL>
 
--   Include support for lexour annotations.
 -   Be for a language used by others. PRs to add toy languages won't be
     approved, but don't worry - lexour still has built-in &#32;
     <InLink href={lang}>support for your language</InLink>!
 
 You'll likely need to make reasonable assumptions about how the language is
-used - read the &#32; <InLink href={lexp}>lexer explanation</InLink> to get an
-idea of some of the assumptions that were made for JavaScript/TypeScript.
+used - read the <InLink href={lexp}>lexer explanation</InLink> to get an idea of
+some of the assumptions that were made for JavaScript/TypeScript.
+
+---
+
+You're also welcome to submit pull requests to modify existing lexers. If you'd
+like to improve an existing lexer, your PR should:
+
+-   Avoid unnecessary breaking changes. If your change can be made with no
+    side-effects, then it should.
+-   Avoid unnecessary complications to theming. New token names should follow
+    the existing token name convention. Rely on lexour's fallback theming where
+    sensible.
+-   Include a rationale for the change. Is it faster? More concise? Did the
+    original not work as expected? A brief explanation goes a long way!
+
+_Changes that would potentially break the most current release of lexour are
+still highly encouraged, but their approval may take longer than non-breaking
+changes_.
