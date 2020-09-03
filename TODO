@@ -1,8 +1,3 @@
-// FUNCTIONALITY //
-[_] Finish JavaScript Lexer
-[_] Add memories prop support
-[_] Double check for accessibility / mobile-friendliness
-
 // FEATURES //
 [_] Allow basic prop passing (onClick, className, etc.)
 [_] Add indent detection and customization (?)
@@ -10,18 +5,13 @@
 [_] Add READ AS annotation
 
 // CODE MAINTENANCE //
-[_] Redo token naming conventions.
 [_] Push whitespace grabbing into other tokens.
-[_] Ask Jordan if there are any optimizations I realistically need to worry about
+[_] Check if there are any optimizations I realistically need to worry about
 
 // PACKAGE MAINTENANE //
 [_] Add tags, licensce, keywords
-[_] Loosen React version requirement
-[_] ??? Move React to peer dependency ???
 
 // DOCS //
-[_] Write README
-[_] Make docs site
 [_] Host docs on GitHub
 
 
