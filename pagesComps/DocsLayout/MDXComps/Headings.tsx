@@ -18,5 +18,5 @@ export function H2({ children }: Props) {
 }
 
 export function HR({ children }: Props) {
-    return <hr className="my-5 border-gray-400" />;
+    return <hr className="my-5 border-gray-400 mx-4" />;
 }
