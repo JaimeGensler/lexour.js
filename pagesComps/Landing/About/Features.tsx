@@ -36,7 +36,7 @@ export default function Features() {
                 <li>
                     <strong>Only one dependency</strong> (
                     <ExLink
-                        href="https://www.github.com/no-context/moo"
+                        href="https://github.com/no-context/moo"
                         title="View Moo on Github"
                     >
                         Moo
