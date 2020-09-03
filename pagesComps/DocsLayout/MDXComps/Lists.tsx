@@ -9,3 +9,9 @@ export function LI({ children }: Props) {
 export function UL({ children }: Props) {
     return <ul className="list-disc pl-8 space-y-1 my-1">{children}</ul>;
 }
+
+export function NestedUL({ children }: Props) {
+    return (
+        <ul className="list-square pl-6 space-y-1 mt-px mb-1">{children}</ul>
+    );
+}

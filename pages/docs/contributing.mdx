@@ -1,7 +1,8 @@
 import Conduct from '../../pagesComps/Docs/Contributing/Conduct';
 import { InLink, ExLink } from '../../pagesComps/utils/Link';
-import { EM } from '../../pagesComps/DocsLayout/MDXComps/Texts';
+import { LI, NestedUL } from '../../pagesComps/DocsLayout/MDXComps/Lists';
 const moo = 'https://github.com/no-context/moo';
+const newIss = 'https://github.com/JaimeGensler/lexour.js/issues/new';
 const lexp = '/docs/lexer-explanation';
 const lang = '/docs/custom-language-support';
 
@@ -15,22 +16,52 @@ as submitting pull requests to lexour. If you're looking to contribute to lexour
 
 ## Creating Issues (issues)
 
+If you run into issues with lexour, make sure you've skimmed the documentation
+first! In particular, if your issue relates to token types, please
+&#32;<InLink href={lexp}>read the lexer explanation</InLink> to make sure that
+your problem isn't explained there. If your problem isn't solved anywhere,
+please <ExLink href={newIss}>make an issue on Github</ExLink> and include the
+following information:
+
+-   Version of lexour _and React_ you are using.
+-   Nature of the issue (tokenization, annotations, accessibility, mobile-use,
+    browser support, et cetera).
+-   A description of the issue, including steps to recreate it, the expected
+    behavior, and other relevent information (browser/device, language).
+
+Issues around accessibility and tokenizing will be resolved as quickly as
+possible.
+
 ## General Pull Request Guidelines (general)
 
-## Language-related Pull Requests (language)
+## Language Pull Requests (language)
 
 If you've built a tokenizer for a language not already included in lexour,
 you're welcome to submit a pull request! At present, for a language-support
 request to be approved, it must:
 
 -   Follow the <InLink href="#general">general contribution guidelines</InLink>.
--   Be written using <ExLink href={moo}>Moo</ExLink>. &#32;
-    <EM>PRs that add new dependencies to tokenize code won't be approved</EM>.
--   Be complete. You'll likely need to make reasonable assumptions about how the
-    language is used - read the &#32;
-    <InLink href={lexp}>lexer explanation</InLink> to get an idea of assumptions
-    that are made for JavaScript/TypeScript.
+-   Be written using <ExLink href={moo}>Moo</ExLink>. _PRs that add new
+    dependencies to tokenize code won't be approved_.
+-   Be complete, including:
+
+    <NestedUL>
+        <LI>support for lexour annotations</LI>
+        <LI>
+            use of <code>moo.error</code> to catch anything otherwise not
+            covered by your rules.
+        </LI>
+        <LI>
+            reuse of token names where sensible (**SEE HERE**), and new token
+            names that follow this convention otherwise.
+        </LI>
+    </NestedUL>
+
 -   Include support for lexour annotations.
--   Be for a **\_FIND A WORD FOR THIS\_** language. PRs to add your toy language
-    won't be approved, but lexour still has built-in &#32;
+-   Be for a language used by others. PRs to add toy languages won't be
+    approved, but don't worry - lexour still has built-in &#32;
     <InLink href={lang}>support for your language</InLink>!
+
+You'll likely need to make reasonable assumptions about how the language is
+used - read the &#32; <InLink href={lexp}>lexer explanation</InLink> to get an
+idea of some of the assumptions that were made for JavaScript/TypeScript.

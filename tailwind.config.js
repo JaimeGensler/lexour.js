@@ -10,6 +10,9 @@ module.exports = {
             transitionProperty: {
                 github: 'transform, opacity',
             },
+            listStyleType: {
+                square: 'square',
+            },
         },
     },
     variants: {
