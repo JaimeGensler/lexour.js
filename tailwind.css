@@ -29,7 +29,9 @@ body h6 {
 }
 .visible-on-focus {
     transform: translateY(-999px);
+    opacity: 0;
 }
 .visible-on-focus:focus {
     transform: translateY(0);
+    opacity: 1;
 }
