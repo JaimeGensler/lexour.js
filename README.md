@@ -2,15 +2,18 @@
 
 # lexour
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+![license: mit](https://img.shields.io/badge/license-MIT-blue)
+![pull requests: welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+
 A React component for your code snippets! Coming soon to a package manager near
 you.
 
 ### Features
 
-lexour provides a simple, intuitive, and highly customizable syntax highlighting
-component: no config, no insane child map to pass - just simple, easily
-customizable syntax highlighting. It includes a number of features out of the
-box, including:
+lexour provides an intuitive and highly customizable syntax highlighting
+component: no config, no insane child prop - just simple, customizable syntax
+highlighting. It includes a number of features out of the box, including:
 
 -   **Accessible, mobile friendly cross-browser support.**
 -   **Built-in type support!** Lexour is built entirely in TypeScript, but you
@@ -40,7 +43,7 @@ yarn add lexour
 ```
 
 **lexour has a peer dependency requirement of `react>=16.8`** (the introduction
-of hooks), so you'll want to double check that as well.
+of hooks).
 
 ## Quick Start
 
@@ -94,7 +97,7 @@ in its entirety to understand what sort of actions are and are not acceptable.
 Once you've done that, read the [guide on contributing][contributing]. And
 again - thank you!
 
-[moo]: https://www.github.com/no-context/moo
+[moo]: https://github.com/no-context/moo
 [docs]: ./README.md
 [conduct]: ./CODE_OF_CONDUCT.md
 [contributing]: ./README.md
