@@ -4,8 +4,8 @@
 
 # lexour
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 ![license: mit](https://img.shields.io/badge/license-MIT-blue)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 ![pull requests: welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
 
 A React component for your code snippets! Coming soon to a package manager near
@@ -13,22 +13,25 @@ you.
 
 ### Features
 
-lexour provides an intuitive and highly customizable syntax highlighting
-component: no config, no insane child prop - just simple, customizable syntax
-highlighting. It includes a number of features out of the box, including:
+lexour is a component for React that tokenizes and renders your code snippets.
+Provide a language and some code, and watch it come to life with proper syntax
+highlighting. lexour provides an intuitive and highly customizable component: no
+config, no insane child prop - just simple, customizable syntax highlighting.
 
--   **Accessible, mobile friendly cross-browser support.**
+It includes a number of features out of the box, including:
+
+-   **Accessible, mobile-friendly, cross-browser support.**
 -   **Built-in type support!** Lexour is built entirely in TypeScript, but you
     can stick with plain ol' JSX if you prefer.
 -   **Annotations!** Likely the most useful and powerful part of lexour,
     annotations provide added functionality that would otherwise be impossible.
--   **Custom theme support!** Don't like the built-in themes? Make your own and
+-   **Custom theme support!** Don't like the provided themes? Make your own and
     pass it to the `theme` prop to see it in action.
--   **Toy language support!** If you build a lexer with **Moo**, you can pass it
-    directly to the `lang` prop and see it in action straight away - no extra
-    setup or config necessary.
+-   **Toy language support!** If you build a tokenizer with **Moo**, you can
+    pass it directly to the `lang` prop and see it in action straight away - no
+    extra setup or config necessary.
 -   **Only one dependency** ([Moo!][moo]). Even better, Moo itself is tiny and
-    currently has **zero dependencies**.
+    currently has zero dependencies.
 
 ## Installation
 
