@@ -50,7 +50,7 @@ export default [
         pageURL: '/docs/contributing',
         subItems: [
             { title: 'Creating Issues', id: 'issues' },
-            { title: 'PR Guidelines', id: 'general-prs' },
+            { title: 'Pull Request Guidelines', id: 'general-prs' },
             { title: 'Language PRs', id: 'language-prs' },
         ],
     },

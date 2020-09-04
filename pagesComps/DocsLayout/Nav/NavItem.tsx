@@ -28,11 +28,15 @@ export default function NavItem({ title, pageURL, subItems }: Props) {
         ? 'border-t border-b bg-gray-200'
         : 'border-r border-gray-300';
 
+    const hocus = isCurrentPage
+        ? 'hover:bg-indigo-300 focus:bg-indigo-300'
+        : 'hover:bg-indigo-200 focus:bg-indigo-200';
+
     return (
         <li className={listStyle}>
             <h2>
                 <Link href={isCurrentPage ? '#content-top' : pageURL}>
-                    <a className="block px-8 py-1 font-bold hover:bg-gray-400">
+                    <a className={`block px-8 py-1 font-semibold ${hocus}`}>
                         {title}
                     </a>
                 </Link>

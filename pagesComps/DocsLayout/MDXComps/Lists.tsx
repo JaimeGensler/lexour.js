@@ -7,7 +7,7 @@ export function LI({ children }: Props) {
     return <li>{children}</li>;
 }
 export function UL({ children }: Props) {
-    return <ul className="list-disc pl-8 space-y-1 my-1">{children}</ul>;
+    return <ul className="list-disc pl-8 space-y-1 mt-1 mb-2">{children}</ul>;
 }
 
 export function NestedUL({ children }: Props) {

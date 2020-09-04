@@ -6,7 +6,7 @@ type Props = {
 
 export default function Section({ children }: Props) {
     return (
-        <section className="border-t border-gray-500 mt-6 pt-2 px-4">
+        <section className="border-t border-gray-500 mt-8 pt-2 px-4">
             {children}
         </section>
     );

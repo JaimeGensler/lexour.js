@@ -8,9 +8,11 @@ type Props = {
 export default function NavSubItem({ title, id }: Props) {
     return (
         <li>
-            <h3 className="pl-12 text-sm hover:bg-gray-300">
+            <h3>
                 <Link href={`#${id}`}>
-                    <a>{title}</a>
+                    <a className="block pl-12 text-sm hover:bg-indigo-200 focus:bg-indigo-200">
+                        {title}
+                    </a>
                 </Link>
             </h3>
         </li>

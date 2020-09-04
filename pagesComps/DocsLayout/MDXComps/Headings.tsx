@@ -17,6 +17,6 @@ export function H2({ children }: Props) {
     );
 }
 
-export function HR({ children }: Props) {
-    return <hr className="my-5 border-gray-400 mx-4" />;
+export function HR() {
+    return <hr className="my-5 border-gray-400 mx-6" />;
 }
