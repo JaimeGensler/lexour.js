@@ -1,6 +1,6 @@
 import React from 'react';
 import { getMarkAnnotationMatches } from '../../utils/annotations';
-import useTheme from '../../utils/useTheme';
+import useTheme from '../useTheme';
 
 type Props = { value: string };
 export default function MarkAsAnnotation({ value }: Props) {

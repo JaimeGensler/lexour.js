@@ -1,5 +1,5 @@
 import React from 'react';
-import useTheme from '../../utils/useTheme';
+import useTheme from '../useTheme';
 import { cleanKeepAnnotationText } from '../../utils/annotations';
 
 type Props = { text: string };

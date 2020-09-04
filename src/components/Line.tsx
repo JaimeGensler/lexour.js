@@ -1,5 +1,5 @@
 import React, { ReactNodeArray, CSSProperties } from 'react';
-import useTheme from '../utils/useTheme';
+import useTheme from './useTheme';
 import getLineNumberString from '../utils/getLineNumberString';
 
 type Props = {
