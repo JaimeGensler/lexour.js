@@ -8,8 +8,8 @@ const lang = '/docs/custom-language-support';
 
 # Contributing
 
-This page includes guidelines for adding issues to lexour's github page as well
-as submitting pull requests to lexour. If you're looking to contribute to lexour
+This page includes guidelines for adding issues to lexour's github page, as well
+as for submitting pull requests. If you're looking to contribute to lexour
 (either with a PR or an issue), thank you so much!
 
 <Conduct />
@@ -17,7 +17,7 @@ as submitting pull requests to lexour. If you're looking to contribute to lexour
 ## Creating Issues (issues)
 
 If you run into issues with lexour, make sure you've skimmed the documentation
-first! In particular, if your issue relates to token types, please
+first! In particular, if your issue relates to token types,
 &#32;<InLink href={lexp}>read the lexer explanation</InLink> to make sure that
 your problem isn't explained there. If your problem isn't solved anywhere,
 please <ExLink href={newIss}>make an issue on Github</ExLink> and include the
@@ -30,41 +30,42 @@ following information:
     behavior, and other information relevent to your issue (browser/device,
     language).
 
+You are also welcome to use Github issues to create feature requests! Provide
+some information on the behavior you'd like to see implemented, and if it's
+popular enough and/or doable, it just might happen!
+
 ## General Pull Request Guidelines (general-prs)
 
-Pull requests are welcome for any part of the repository - tests, the package
+Pull requests are welcome for any part of this repository - tests, the package
 itself, or the docs! Here are some guidelines to follow before making your pull
 request:
 
 -   **ALL** PRs must use TypeScript. PRs using JavaScript without good reason
     will be mercilessly (and gleefully) destroyed.
--   PRs must be formatted with prettier (prettier config is included in the
-    repository).
+-   PRs must be formatted with prettier (config is included in the repository).
 -   Avoid adding dependencies. PRs with dependencies may still be approved, but
     are not preferred. Dev dependencies for the docs/testing are no problem!
--   Short PRs may be self-explanatory, but larger PRs should offer some
-    explanation of the changes made.
+-   Short PRs may be self-explanatory, but larger PRs should offer a more
+    detailed explanation of the changes made.
 -   If your PR adds new features or changes existing functionality, you don't
-    have to update the docs yourself, but you should provide enough information
-    that it is easy for others to do so.
+    have to update the docs yourself, but make sure you provide enough
+    information so that it is easy for others to do so.
 
-Other than that, have at it! If your PR changes/adds functionality, you don't
-have to update the docs yourself, but you should provide enough information that
-it is easy for others to do so.
+Other than that, have at it!
 
 ## Language Pull Requests (language-prs)
 
 If you've built a tokenizer for a language not already included in lexour,
-you're welcome to submit a pull request! At present, for a language-support
-request to be approved, it must:
+you're welcome to submit a pull request! At present, for a language-addition
+pull request to be approved, it must:
 
 -   Follow the general contribution guidelines.
--   Be written using <ExLink href={moo}>Moo</ExLink>. _PRs that add new
-    dependencies to tokenize code will not be approved_.
+-   Be written using <ExLink href={moo}>Moo</ExLink>. _At this time, PRs that
+    add new dependencies to tokenize code will not be approved_.
 -   Be complete, including:
 
     <NestedUL>
-        <LI>support for lexour annotations</LI>
+        <LI>support for lexour annotations.</LI>
         <LI>
             use of <code>moo.error</code> to catch anything otherwise not
             covered by your rules.
@@ -81,7 +82,7 @@ request to be approved, it must:
 
 You'll likely need to make reasonable assumptions about how the language is
 used - read the <InLink href={lexp}>lexer explanation</InLink> to get an idea of
-some of the assumptions that were made for JavaScript/TypeScript.
+some of the assumptions that were made for the JavaScript/TypeScript lexers.
 
 ---
 
@@ -94,8 +95,8 @@ like to improve an existing lexer, your PR should:
     the existing token name convention. Rely on lexour's fallback theming where
     sensible.
 -   Include a rationale for the change. Is it faster? More concise? Did the
-    original not work as expected? A brief explanation goes a long way!
+    original not work as expected?
 
-_Changes that would potentially break the most current release of lexour are
-still highly encouraged, but their approval may take longer than non-breaking
+_Changes that would potentially break the current release of lexour are still
+highly encouraged, but their approval may take longer than non-breaking
 changes_.
