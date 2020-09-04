@@ -3,7 +3,7 @@ const conduct =
 
 export default function Conduct() {
     return (
-        <div className="mt-2 bg-gray-800 px-6 py-4 rounded-lg shadow-lg ml-8">
+        <div className="mt-2 bg-gray-800 px-6 py-4 rounded-lg shadow-lg">
             <p className="text-gray-300 text-base">
                 All issues and pull requests must follow the Code of Conduct.
                 Contributions in violation of this code will be removed without
