@@ -42,6 +42,10 @@ export default function getTokens(
             }
         }
 
+        if (type === 'invalid') {
+            console.error("This input couldn't be fully tokenized!");
+        }
+
         // === Handle special cases ===
         if (type === 'NEWLINE') {
             return null;
