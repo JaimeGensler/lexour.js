@@ -1,0 +1,19 @@
+import { InLink, ExLink } from '../../pagesComps/utils/Link';
+const semver = 'https://semver.org/';
+
+# Versioning
+
+lexour follows <ExLink href={semver}>semantic versioning (semver)</ExLink> &#32;
+principles.
+
+Given a version `a.b.c`:
+
+-   For bug fixes (e.g. incorrect tokenization, theming), a patch is released,
+    incrementing `"c"` (`1.2.3 => 1.2.4`).
+-   For new features (e.g. a new language, theme, or annotation type), a minor
+    version is released, incrementing `"b"` (`1.2.4 => 1.3.0`).
+-   For breaking changes, a major version is released, incrementing `"a"`
+    (`1.3.1 => 2.0.0`). Major releases may include new features; any release may
+    fix bugs.
+
+Breaking changes are inconvenient and will be avoided wherever possible.
