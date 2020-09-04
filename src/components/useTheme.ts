@@ -1,5 +1,5 @@
 import { useContext, CSSProperties } from 'react';
-import ThemeContext from '../components/Contexts/ThemeContext';
+import ThemeContext from './Contexts/ThemeContext';
 
 interface Acc {
     style?: CSSProperties;
