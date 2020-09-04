@@ -1,5 +1,7 @@
 # THIS README IS A WORK IN PROGRESS - MANY LINKS DON'T WORK AND THE PACKAGE IS NOT YET ON NPM
 
+<img src="images/lexour-icon.svg" height="150px" align="left" />
+
 # lexour
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -25,8 +27,8 @@ highlighting. It includes a number of features out of the box, including:
 -   **Toy language support!** If you build a lexer with **Moo**, you can pass it
     directly to the `lang` prop and see it in action straight away - no extra
     setup or config necessary.
--   **Only one dependency** ([Moo!][moo]). Even better, Moo itself is tiny (4KB
-    minified + gzipped) and currently has **zero dependencies**.
+-   **Only one dependency** ([Moo!][moo]). Even better, Moo itself is tiny and
+    currently has **zero dependencies**.
 
 ## Installation
 
@@ -42,8 +44,8 @@ Or, if you prefer yarn:
 yarn add lexour
 ```
 
-**lexour has a peer dependency requirement of `react>=16.8`** (the introduction
-of hooks).
+**lexour has a peer dependency requirement of `react>=16.8` and
+`react-dom>=16.8`** (the introduction of hooks).
 
 ## Quick Start
 
