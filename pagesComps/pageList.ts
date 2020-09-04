@@ -1,10 +1,5 @@
 export default [
     {
-        title: 'Home',
-        pageURL: '/',
-        subItems: [],
-    },
-    {
         title: 'Quick Start',
         pageURL: '/docs/get-started',
         subItems: [
