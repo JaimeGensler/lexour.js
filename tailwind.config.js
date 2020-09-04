@@ -9,6 +9,7 @@ module.exports = {
             },
             transitionProperty: {
                 github: 'transform, opacity',
+                landingNav: 'border-width, font-weight',
             },
             listStyleType: {
                 square: 'square',
@@ -33,6 +34,7 @@ module.exports = {
             'group-focus',
         ],
         backgroundColor: ['responsive', 'hover', 'focus', 'even'],
+        borderWidth: ['responsive', 'hover', 'focus'],
     },
     plugins: [],
 };
