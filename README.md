@@ -1,6 +1,6 @@
 # THIS README IS A WORK IN PROGRESS - MANY LINKS DON'T WORK AND THE PACKAGE IS NOT YET ON NPM
 
-<img src="images/lexour-icon.svg" height="150px" align="left" />
+<img src="images/lexour.svg" height="160px" align="left" />
 
 # lexour
 
