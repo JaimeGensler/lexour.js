@@ -1,15 +1,18 @@
-# THIS README IS A WORK IN PROGRESS - MANY LINKS DON'T WORK AND THE PACKAGE IS NOT YET ON NPM
+# THIS PACKAGE IS A WORK IN PROGRESS - NOT ALL LINKS ON THE README WORK AND THE PACKAGE IS NOT YET PROPERLY BUILT FOR NPM
 
 <img src="images/lexour.svg" height="160px" align="left" />
 
 # lexour
 
-![license: mit](https://img.shields.io/badge/license-MIT-blue)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-![pull requests: welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+[![license: mit](https://img.shields.io/badge/license-MIT-blue)][license]
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)][prettier]
+[![pull requests: welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)][pull_requests]
 
-A React component for your code snippets! Coming soon to a package manager near
-you.
+[license]: ./LICENSE
+[prettier]: https://github.com/prettier/prettier
+[pull_requests]: https://github.com/JaimeGensler/lexour.js/pulls
+
+A React component for your code snippets!
 
 ### Features
 

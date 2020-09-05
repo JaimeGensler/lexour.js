@@ -1,5 +1,5 @@
 {
-    "name": "lexourjs",
+    "name": "lexour",
     "version": "0.0.1",
     "description": "A React component for your code snippets",
     "main": "src/index.tsx",
@@ -12,9 +12,7 @@
         "type": "git",
         "url": "https://github.com/JaimeGensler/lexour.js"
     },
-    "keywords": [
-        "tbd"
-    ],
+    "keywords": [],
     "author": "Jaime Gensler <jaimegensler0@gmail.com>",
     "license": "MIT",
     "dependencies": {
