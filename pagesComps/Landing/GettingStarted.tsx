@@ -9,7 +9,7 @@ const packageInstall = `
 `;
 export default function GettingStarted() {
     return (
-        <section className="border-t border-gray-600 mt-12 pt-2 px-4">
+        <section className="space-y-2">
             <h2 className="font-bold text-4xl">Getting Started</h2>
             <p>
                 To get started with lexour, you'll need to install the package:

@@ -10,8 +10,8 @@ export default function About() {
                 renders your code snippets. Provide a language and some code,
                 and watch your input come to life with proper syntax
                 highlighting. <LexourText /> provides an intuitive and highly
-                customizable syntax highlighting component: no config, no insane
-                child prop - just simple, customizable syntax highlighting.
+                customizable component: no config, no insane child prop - just
+                simple, customizable syntax highlighting.
             </p>
             <div className="mt-4">
                 <p>

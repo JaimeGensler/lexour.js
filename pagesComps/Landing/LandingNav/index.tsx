@@ -8,7 +8,7 @@ const pageLinks = pageList.map(page => (
 export default function LandingNav() {
     return (
         <nav>
-            <ol>{pageLinks}</ol>
+            <ol className="divide-y-1 border-gray-800">{pageLinks}</ol>
         </nav>
     );
 }
