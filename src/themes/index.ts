@@ -1,4 +1,7 @@
 import oneDarkPro from './oneDarkPro';
-import githubLight from './githubLight';
+// import githubLight from './githubLight';
 
-export default { oneDarkPro, githubLight };
+export default {
+    oneDarkPro,
+    // githubLight
+};

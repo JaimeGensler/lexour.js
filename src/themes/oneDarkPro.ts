@@ -1,4 +1,4 @@
-import { ThemeObject } from '../types';
+import type { Theme } from '../types';
 
 export default {
     DEFAULT: {
@@ -98,4 +98,4 @@ export default {
             color: '#abb2bf',
         },
     },
-} as ThemeObject;
+} as Theme;
