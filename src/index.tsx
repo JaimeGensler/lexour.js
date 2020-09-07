@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { Lang, Theme } from './types';
+import type { Lang, ThemeProp } from './types';
 import lexers from './lexers';
 import themes from './themes';
 import Code from './components/Code';
@@ -13,7 +13,7 @@ type Props = {
     lang: Lang;
 
     style?: React.CSSProperties;
-    theme?: Theme;
+    theme?: ThemeProp;
     firstLine?: number;
     showLineNumbers?: boolean;
 };

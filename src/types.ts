@@ -2,12 +2,12 @@ import { Lexer } from 'moo';
 import { CSSProperties } from 'react';
 
 export type BuiltInTheme = 'oneDarkPro' | 'githubLight';
-export interface ThemeObject {
+export interface Theme {
     DEFAULT: CSSProperties;
     LINE_NUMBER: CSSProperties;
     [tokenName: string]: CSSProperties;
 }
-export type Theme = BuiltInTheme | ThemeObject;
+export type ThemeProp = BuiltInTheme | Theme;
 
 export type BuiltInLang =
     | 'html'
