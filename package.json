@@ -15,10 +15,7 @@
     "keywords": [],
     "author": "Jaime Gensler <jaimegensler0@gmail.com>",
     "license": "MIT",
-    "dependencies": {
-        "moo": "^0.5.1",
-        "@types/moo": "^0.5.3"
-    },
+    "dependencies": {},
     "peerDependencies": {
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
