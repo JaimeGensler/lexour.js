@@ -1,8 +1,8 @@
 import type { Token, TokenResolver } from '../../types';
 
 export default function resolveToken(
-    tokenResolver: TokenResolver,
     value: string,
+    tokenResolver: TokenResolver,
     actions: any,
 ): Token {
     const res =

@@ -1,4 +1,4 @@
-import buildLexer, { comment, remainder } from '../lexer';
+import { buildLexer, comment, remainder } from '../lexer';
 
 export default buildLexer('MAIN')
     .addState(

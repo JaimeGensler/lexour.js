@@ -1,44 +1,54 @@
-import type { Token, TokenResolver } from '../../types';
-import resolveToken from '../utils/resolveToken';
-
+import type { Token } from '../../types';
 type Line = Token[];
 type Block = Array<[number, ...Line]>;
+
+const linebreak = /\r\n|\r|\n/;
 
 export default function getBlockManager(firstLine: number) {
     let currentLineNumber = firstLine;
     let nextLineNumber = firstLine + 1;
     const block: Block = [];
-    const line: Line = [];
+    const currentLine: Line = [];
+
+    const addLineToBlock = () => {
+        block.push([currentLineNumber, ...currentLine]);
+        currentLine.length = 0;
+    };
 
     const getBlock = () => {
-        if (line.length !== 0) {
-            block.push([currentLineNumber, ...line]);
+        if (currentLine.length !== 0) {
+            addLineToBlock();
         }
         return block;
     };
 
-    const addToken = (
-        tokenResolver: TokenResolver,
-        value: string,
-        actions: any,
-    ) => {
-        const token = resolveToken(tokenResolver, value, actions);
-        line.push(token);
+    const addToken = ({ value, type }: Token) => {
+        if (!linebreak.test(value)) {
+            currentLine.push({ value, type });
+            return;
+        }
+        value.split(linebreak).forEach((line, i, { length }) => {
+            if (line.length !== 0) {
+                currentLine.push({ value: line, type });
+            }
+            if (i < length - 1) {
+                addLineToBlock();
+            }
+        });
     };
-    const addToMostRecentToken = (extra: string) => {
-        if (line.length > 0) {
-            line[line.length - 1].value += extra;
+    const addToMostRecentToken = (addition: string) => {
+        if (currentLine.length > 0) {
+            currentLine[currentLine.length - 1].value += addition;
         }
     };
     const startNewLine = (indent: string) => {
-        block.push([currentLineNumber, ...line]);
-        line.length = 0;
+        addLineToBlock();
         if (indent.length > 0) {
-            line.push({ value: indent, type: 'INDENTATION' });
+            currentLine.push({ value: indent, type: 'INDENTATION' });
         }
     };
     const handleWhitespace = (whitespace: string) => {
-        const lines = whitespace.split(/\r\n|\r|\n/);
+        const lines = whitespace.split(linebreak);
         lines.forEach((line, i) => {
             if (i === 0) {
                 addToMostRecentToken(line);

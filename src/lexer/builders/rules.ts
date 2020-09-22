@@ -1,5 +1,5 @@
-import type { TokenResolver } from '../../types';
 import getRegExpString from '../utils/getRegExpString';
+import type { TokenResolver } from '../../types';
 
 export enum RuleType {
     COMMON = 'COMMON',
@@ -36,5 +36,14 @@ export function comment(
 
     return { ruleType: RuleType.COMMON, tokenResolver: 'comment', search };
 }
+
+const commentResolver = (match: string) => {
+    if (/\r\n|\r|\n/.test(match)) {
+        // Annotations may not cross lines
+        return 'comment';
+    }
+    if (/ /.test(match)) {
+    }
+};
 
 // export function keywords(keywords, tokenResolver) {}

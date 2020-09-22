@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import languages from './languages';
 import themes from './themes';
-import tokenizeString from './lexer/tokenizeString';
+import tokenizeString from './lexer';
 import Line from './components/Line';
 import ThemeContext from './components/ThemeContext';
 import type { Lang, ThemeProp } from './types';

@@ -1,4 +1,4 @@
-import buildLexer, { rule, remainder } from '../lexer';
+import { buildLexer, rule, remainder } from '../lexer';
 
 enum HtmlState {
     MAIN = 'MAIN',
