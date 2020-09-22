@@ -1,6 +1,7 @@
-import { Lexer } from 'moo';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
+import type { Lexer } from './lexer/builders/lexer';
 
+// === Theme Types ===
 export type BuiltInTheme = 'oneDarkPro';
 export interface Theme {
     DEFAULT: CSSProperties;
@@ -9,10 +10,9 @@ export interface Theme {
 }
 export type ThemeProp = BuiltInTheme | Theme;
 
-export type BuiltInLang =
-    | 'html'
-    | 'javascript'
-    | 'js' /* | 'typescript' | 'ts' | 'jsx' | 'tsx'*/;
+// === Language Types ===
+// 'javascript' | 'js' | 'typescript'  | 'ts' | 'jsx' | 'tsx'*/;
+export type BuiltInLang = 'html' | 'terminal';
 export type Lang = BuiltInLang | Lexer;
 
 export enum AnnotationType {
@@ -28,3 +28,13 @@ export interface LineTracker {
     advance: () => void;
     jumpTo: (nextLine: number) => void;
 }
+
+// === Lexer Types ===
+export interface Token {
+    type: string;
+    value: string;
+}
+export type TokenResolver =
+    | string
+    | ((value: string, actions: any) => string)
+    | ((value: string, actions: any) => Token);

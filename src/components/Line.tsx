@@ -1,11 +1,13 @@
-import React, { ReactNodeArray, CSSProperties } from 'react';
+import React, { ReactNode, ReactNodeArray, CSSProperties } from 'react';
 import useTheme from './useTheme';
 import getLineNumberString from '../utils/getLineNumberString';
+import Text from './Tokens/Text';
+import type { Token } from '../types';
 
 type Props = {
     lineNumber: number;
     showLineNumbers: boolean;
-    children: ReactNodeArray;
+    tokens: Token[];
 };
 
 const unselectable: CSSProperties = {
@@ -15,11 +17,11 @@ const unselectable: CSSProperties = {
     userSelect: 'none',
 };
 
-export default function Line({ lineNumber, showLineNumbers, children }: Props) {
+export default function Line({ lineNumber, showLineNumbers, tokens }: Props) {
     const style = useTheme('LINE_NUMBER');
     // Better spacing solutions:
     // give line numbers fixed width and right-aligned text
-    // put elements in a table (there are many consequences of doing this)
+    // style elements as table
 
     const lineNumComp = !showLineNumbers ? null : (
         <span style={{ marginRight: '1rem', ...style, ...unselectable }}>
@@ -27,10 +29,12 @@ export default function Line({ lineNumber, showLineNumbers, children }: Props) {
         </span>
     );
 
+    const tokenComps = tokens.map((token, i) => <Text {...token} key={i} />);
+
     return (
         <div>
             {lineNumComp}
-            {children}
+            {tokenComps}
         </div>
     );
 }

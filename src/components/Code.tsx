@@ -1,33 +1,40 @@
-import React, { useContext, ReactNodeArray } from 'react';
+import React, { ReactNodeArray } from 'react';
+import Lexer from '../Lexer';
 
-import LexerContext from './Contexts/LexerContext';
 import Line from './Line';
 import getTokens from './Tokens';
 import getLineTracker from '../utils/getLineTracker';
 
 type Props = {
+    lexer: Lexer;
     codeLines: string[];
     showLineNumbers: boolean;
     firstLine: number;
 };
 
-export default function Code({ codeLines, showLineNumbers, firstLine }: Props) {
-    const lexer = useContext(LexerContext);
+export default function Code({
+    lexer,
+    codeLines,
+    showLineNumbers,
+    firstLine,
+}: Props) {
     const lineTracker = getLineTracker(firstLine);
 
     const codeComponents: ReactNodeArray = codeLines.map(codeLine => {
         lineTracker.advance();
+        const tokens = lexer.$$feed(codeLine);
+        if (tokens.length === 0) {
+            return null;
+        }
+        const tokenComps = undefined;
 
-        lexer.reset(`${codeLine}\n`, lexer.save());
-        const tokens = getTokens(lexer, lineTracker);
-
-        return tokens.length === 0 ? null : (
+        return (
             <Line
                 showLineNumbers={showLineNumbers}
                 lineNumber={lineTracker.getCurrent()}
                 key={lineTracker.getCurrent()}
             >
-                {tokens}
+                {tokenComps}
             </Line>
         );
     });
