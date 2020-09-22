@@ -90,13 +90,8 @@ more (_wowee_)! It also [provides some information][lexer_explanation] about how
 lexour works under the hood, **which is probably where you want to look if it
 seems like a token is of the wrong type**.
 
-It should be noted here that **lexour is only a lexer**. It does not parse the
-input code or generate an AST, and it _certainly_ does not run it. As such,
-lexour has no way of knowing if your input represents a valid chunk of code (and
-you probably don't want it to, either). Valid code will always be more-or-less
-displayed as expected ([read why it's more-or-less][lexer_explanation]), but
-invalid code will either appear as valid or be marked as invalid, depending on
-the language and the input code.
+**lexour is only a tokenizer**. It does not parse the input code or generate an
+AST, and it certainly does not run it.
 
 ## Contributing
 
