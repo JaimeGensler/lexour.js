@@ -1,5 +1,5 @@
-import type { Token } from '../../types';
-type Line = Token[];
+import type { Token, StandardToken } from '../../types';
+type Line = StandardToken[];
 type Block = Array<[number, ...Line]>;
 
 const linebreak = /\r\n|\r|\n/;
@@ -25,6 +25,10 @@ export default function getBlockManager(firstLine: number) {
     };
 
     const addToken = ({ value, type }: Token) => {
+        if (typeof value === 'number') {
+            nextLineNumber = value;
+            return;
+        }
         if (!linebreak.test(value)) {
             currentLine.push({ value, type });
             return;

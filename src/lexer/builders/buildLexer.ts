@@ -1,5 +1,5 @@
-import { RuleType } from './rules';
-import type { Rule } from './rules';
+import { RuleType } from '../../types';
+import type { Rule } from '../../types';
 import type { TokenResolver } from '../../types';
 
 export interface LexerStateRules {

@@ -1,13 +1,13 @@
 import React from 'react';
 import useTheme from './Theme/useTheme';
 import Text from './Text';
-import type { Token } from '../types';
+import type { StandardToken } from '../types';
 import Conditional from './Conditional';
 
 type Props = {
     lineNumber: number;
     showLineNumbers: boolean;
-    tokens: Token[];
+    tokens: StandardToken[];
 };
 
 const unselectable: React.CSSProperties = {

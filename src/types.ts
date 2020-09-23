@@ -15,26 +15,29 @@ export type ThemeProp = BuiltInTheme | Theme;
 export type BuiltInLang = 'html' | 'terminal';
 export type Lang = BuiltInLang | Lexer;
 
-export enum AnnotationType {
-    COMMENT = 'COMMENT',
-
-    KEEP = 'KEEP',
-    NEXT_LINE = 'NEXT_LINE',
-    MARK_AS = 'MARK',
-}
-
-export interface LineTracker {
-    getCurrent: () => number;
-    advance: () => void;
-    jumpTo: (nextLine: number) => void;
-}
-
 // === Lexer Types ===
-export interface Token {
+export interface StandardToken {
     type: string;
     value: string;
 }
+export interface NextLineToken {
+    type: 'lexour.annotation.nextLine';
+    value: number;
+}
+export type Token = StandardToken | NextLineToken;
+
 export type TokenResolver =
     | string
-    | ((value: string, actions: any) => string)
-    | ((value: string, actions: any) => Token);
+    | ((value: string, actions: any) => string | Token);
+
+export enum RuleType {
+    COMMON = 'COMMON',
+    REMAINDER = 'REMAINDER',
+}
+// This can probably be improved
+export interface Rule {
+    readonly ruleType: RuleType;
+    readonly tokenResolver: TokenResolver;
+    readonly search?: string;
+}
+export type Matcher = string | RegExp;
