@@ -21,9 +21,15 @@ export interface Token {
     value: string;
 }
 
+export interface ResolverActions {
+    pushState: (newState: string) => number;
+    popState: () => string;
+    // memorize: (key: any, value: any) => void;
+    // recall: (key: any) => any;
+}
 export type TokenResolver =
     | string
-    | ((value: string, actions: any) => string | Token);
+    | ((value: string, actions: ResolverActions) => string | Token);
 
 export enum RuleType {
     COMMON = 'COMMON',
