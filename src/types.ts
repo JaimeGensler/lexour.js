@@ -16,15 +16,10 @@ export type BuiltInLang = 'html' | 'terminal';
 export type Lang = BuiltInLang | Lexer;
 
 // === Lexer Types ===
-export interface StandardToken {
+export interface Token {
     type: string;
     value: string;
 }
-export interface NextLineToken {
-    type: 'lexour.annotation.nextLine';
-    value: number;
-}
-export type Token = StandardToken | NextLineToken;
 
 export type TokenResolver =
     | string

@@ -1,5 +1,5 @@
-import type { Token, StandardToken } from '../../types';
-type Line = StandardToken[];
+import type { Token } from '../../types';
+type Line = Token[];
 type Block = Array<[number, ...Line]>;
 
 const linebreak = /\r\n|\r|\n/;
@@ -25,8 +25,8 @@ export default function getBlockManager(firstLine: number) {
     };
 
     const addToken = ({ value, type }: Token) => {
-        if (typeof value === 'number') {
-            nextLineNumber = value;
+        if (type === 'lexour.annotation.nextLine') {
+            nextLineNumber = parseInt(value, 10);
             return;
         }
         if (!linebreak.test(value)) {

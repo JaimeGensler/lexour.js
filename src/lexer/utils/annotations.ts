@@ -1,4 +1,4 @@
-import type { NextLineToken, StandardToken } from '../../types';
+import type { Token } from '../../types';
 
 export enum AnnotationType {
     COMMENT = 'COMMENT',
@@ -25,16 +25,15 @@ export function getAnnotationType(value: string): AnnotationType {
     return AnnotationType.COMMENT;
 }
 
-export function getKeepToken(match: string): StandardToken {
+export function getKeepToken(match: string): Token {
     return { value: match.replace(/KEEP[\s]/, ''), type: 'comment' };
 }
 
-export function getMarkAsToken(match: string): StandardToken {
+export function getMarkAsToken(match: string): Token {
     const [, value, type] = annoSearch.MARK_AS.exec(match)!; // Has already been tested to match
     return { value, type };
 }
-export function getNextLineToken(match: string): NextLineToken {
-    const [, lineNum] = annoSearch.NEXT_LINE.exec(match)!; // Has already been tested to match
-    const value = parseInt(lineNum, 10); // Cannot be NAN because nextLine only matches 0-9 chars.
+export function getNextLineToken(match: string): Token {
+    const [, value] = annoSearch.NEXT_LINE.exec(match)!; // Has already been tested to match
     return { value, type: 'lexour.annotation.nextLine' };
 }
