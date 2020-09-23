@@ -4,14 +4,13 @@ import languages from './languages';
 import themes from './themes';
 import tokenizeString from './lexer';
 import Line from './components/Line';
-import ThemeContext from './components/ThemeContext';
+import ThemeContext from './components/Theme/ThemeContext';
 import type { Lang, ThemeProp } from './types';
 
 type Props = {
     code: string;
     lang: Lang;
 
-    style?: React.CSSProperties;
     theme?: ThemeProp;
     firstLine?: number;
     showLineNumbers?: boolean;
@@ -21,12 +20,10 @@ const styles: React.CSSProperties = {
     display: 'table',
 };
 
-// Style and other HTML prop passing should probably be done differently
 export default function CodeBlock({
     code,
     lang,
 
-    style = {},
     theme = 'oneDarkPro',
     showLineNumbers = false,
     firstLine = 1,

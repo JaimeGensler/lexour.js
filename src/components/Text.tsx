@@ -1,10 +1,7 @@
 import React from 'react';
-import useTheme from '../useTheme';
+import useTheme from './Theme/useTheme';
 
-type Props = {
-    type: string;
-    value: string;
-};
+type Props = { type: string; value: string };
 export default function Text({ type, value }: Props) {
     const style = useTheme(type);
 
