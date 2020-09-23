@@ -4,7 +4,7 @@ export default buildLexer('MAIN')
     .addState(
         'MAIN',
         comment('//'),
-        comment(/\*/, /\*/, true),
+        comment('/*', '*/', true),
         remainder('text'),
     )
     .build();

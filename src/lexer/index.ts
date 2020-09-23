@@ -1,4 +1,4 @@
-import buildLexer from './builders/lexer';
+import buildLexer from './builders/buildLexer';
 export { buildLexer };
 export * from './builders/rules';
 
@@ -6,9 +6,8 @@ import getStateManager from './managers/getStateManager';
 import getBlockManager from './managers/getBlockManager';
 import getVariableManager from './managers/getVariableManager';
 import resolveToken from './utils/resolveToken';
-import throwZeroLengthValues from './utils/throwZeroLengthValues';
 import shouldDumpRegister from './utils/shouldDumpRegister';
-import type { Lexer } from './builders/lexer';
+import type { Lexer } from './builders/buildLexer';
 
 export default function tokenizeString(
     { defaultState, states: lexerStates }: Lexer,

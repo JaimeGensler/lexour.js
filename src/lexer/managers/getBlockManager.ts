@@ -12,6 +12,8 @@ export default function getBlockManager(firstLine: number) {
 
     const addLineToBlock = () => {
         block.push([currentLineNumber, ...currentLine]);
+        currentLineNumber = nextLineNumber;
+        nextLineNumber++;
         currentLine.length = 0;
     };
 

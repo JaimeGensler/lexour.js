@@ -5,10 +5,6 @@ enum HtmlState {
     TAG = 'TAG',
 }
 
-// const { getState, resetState, pushState, popState } = getStateManager(
-//     HtmlState.MAIN,
-// );
-
 export default buildLexer(HtmlState.MAIN)
     .addState(
         HtmlState.MAIN,

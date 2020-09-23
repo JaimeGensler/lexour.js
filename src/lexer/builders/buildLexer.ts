@@ -1,4 +1,4 @@
-import { RuleType } from '../builders/rules';
+import { RuleType } from './rules';
 import type { Rule } from './rules';
 import type { TokenResolver } from '../../types';
 
@@ -15,9 +15,6 @@ export interface Lexer {
 export default function buildLexer(defaultState: string) {
     const lexer: Lexer = { defaultState, states: {} };
 
-    // Build exists so that later all of the states can be built here.
-    // Delayed state building will let users change a specific state rule,
-    // or add rules of their own.
     const build = () => lexer;
     const addState = (stateName: string, ...rules: Rule[]) => {
         let hasRemainderHandler = false;
