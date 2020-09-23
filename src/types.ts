@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import type { Lexer } from './lexer/builders/lexer';
+import type { Lexer } from './lexer/builders/buildLexer';
 
 // === Theme Types ===
 export type BuiltInTheme = 'oneDarkPro';

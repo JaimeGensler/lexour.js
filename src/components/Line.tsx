@@ -1,6 +1,5 @@
-import React, { ReactNode, ReactNodeArray, CSSProperties } from 'react';
+import React from 'react';
 import useTheme from './useTheme';
-import getLineNumberString from '../utils/getLineNumberString';
 import Text from './Tokens/Text';
 import type { Token } from '../types';
 
@@ -10,31 +9,41 @@ type Props = {
     tokens: Token[];
 };
 
-const unselectable: CSSProperties = {
+const unselectable: React.CSSProperties = {
     MozUserSelect: 'none',
     WebkitUserSelect: 'none',
     msUserSelect: 'none',
     userSelect: 'none',
+
+    // Hacky temporary solution
+    width: 1,
+    whiteSpace: 'nowrap',
+
+    display: 'table-cell',
+    paddingRight: '1rem',
+    textAlign: 'right',
 };
 
 export default function Line({ lineNumber, showLineNumbers, tokens }: Props) {
     const style = useTheme('LINE_NUMBER');
-    // Better spacing solutions:
-    // give line numbers fixed width and right-aligned text
-    // style elements as table
 
     const lineNumComp = !showLineNumbers ? null : (
-        <span style={{ marginRight: '1rem', ...style, ...unselectable }}>
-            {getLineNumberString(lineNumber)}
-        </span>
+        <div
+            style={{
+                ...unselectable,
+                ...style,
+            }}
+        >
+            {lineNumber}
+        </div>
     );
 
     const tokenComps = tokens.map((token, i) => <Text {...token} key={i} />);
 
     return (
-        <div>
+        <div style={{ display: 'table-row' }}>
             {lineNumComp}
-            {tokenComps}
+            <div style={{ display: 'table-cell' }}>{tokenComps}</div>
         </div>
     );
 }

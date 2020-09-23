@@ -17,6 +17,10 @@ type Props = {
     showLineNumbers?: boolean;
 };
 
+const styles: React.CSSProperties = {
+    display: 'table',
+};
+
 // Style and other HTML prop passing should probably be done differently
 export default function CodeBlock({
     code,
@@ -44,10 +48,12 @@ export default function CodeBlock({
         />
     ));
     return (
-        <pre style={{ margin: 0, ...themeObject.DEFAULT, ...style }}>
-            <ThemeContext.Provider value={themeObject}>
-                {lineComps}
-            </ThemeContext.Provider>
+        <pre style={{ margin: 0, ...themeObject.DEFAULT }}>
+            <div style={{ display: 'table', width: '100%' }}>
+                <ThemeContext.Provider value={themeObject}>
+                    {lineComps}
+                </ThemeContext.Provider>
+            </div>
         </pre>
     );
 }
