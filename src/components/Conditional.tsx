@@ -5,6 +5,5 @@ type Props = {
     children?: ReactNode | ReactNodeArray;
 };
 export default function Conditional({ shouldRender, children }: Props) {
-    if (!shouldRender) return null;
-    return <>{children}</>;
+    return shouldRender ? <>{children}</> : null;
 }
