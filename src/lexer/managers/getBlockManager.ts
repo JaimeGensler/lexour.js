@@ -32,6 +32,7 @@ export default function getBlockManager(firstLine: number) {
         return (
             previousToken !== undefined &&
             (previousToken.type === 'EMPTY' ||
+                currentToken.type === 'EMPTY' ||
                 previousToken.type === currentToken.type)
         );
     };
@@ -55,7 +56,10 @@ export default function getBlockManager(firstLine: number) {
                 if (!shouldMergeTokens(previousToken, currentToken)) {
                     currentLine.push(currentToken);
                 } else {
-                    previousToken.type = currentToken.type;
+                    previousToken.type =
+                        currentToken.type === 'EMPTY'
+                            ? previousToken.type
+                            : currentToken.type;
                     previousToken.value += currentToken.value;
                 }
             }
