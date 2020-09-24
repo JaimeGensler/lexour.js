@@ -14,16 +14,16 @@ export default function tokenizeString(
     register: string,
     firstLine: number,
 ) {
-    const { getBlock, addToken, handleWhitespace } = getBlockManager(firstLine);
+    const { getBlock, processToken } = getBlockManager(firstLine);
     const { getState, ...stateActions } = getStateManager(defaultState);
     const actions = { ...stateActions, ...getVariableManager() };
 
     while (register.length > 0) {
         // ===== NEWLINE/INDENT HANDLER =====
-        const whitespace = /^[\s]+/.exec(register);
-        if (!!whitespace) {
-            handleWhitespace(whitespace[0]);
-            register = register.slice(whitespace[0].length);
+        const startingWhitespace = /^[\s]+/.exec(register);
+        if (!!startingWhitespace) {
+            processToken({ type: 'EMPTY', value: startingWhitespace[0] });
+            register = register.slice(startingWhitespace[0].length);
         }
 
         // ===== SEARCH FOR MATCH =====
@@ -34,7 +34,7 @@ export default function tokenizeString(
         // ===== DUMP REGISTER =====
         if (shouldDumpRegister(searchResult, hasRemainderHandler)) {
             const token = resolveToken(register, tokenResolvers[0], actions);
-            addToken(token);
+            processToken(token);
             break;
         }
         // ===== HANDLE REMAINDER =====
@@ -42,7 +42,7 @@ export default function tokenizeString(
             const value = register.slice(0, searchResult.index);
             register = register.slice(searchResult.index);
             const token = resolveToken(value, tokenResolvers[0], actions);
-            addToken(token);
+            processToken(token);
         }
         // ===== SEND TOKEN IN =====
         const matchIndex = searchResult.findIndex(
@@ -57,7 +57,7 @@ export default function tokenizeString(
         const tokenResolver = tokenResolvers[matchIndex];
 
         const token = resolveToken(value, tokenResolver, actions);
-        addToken(token);
+        processToken(token);
         register = register.slice(value.length);
     }
     return getBlock();
