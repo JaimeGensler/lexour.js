@@ -6,6 +6,7 @@ import tokenizeString from './lexer';
 import Line from './components/Line';
 import ThemeContext from './components/Theme/ThemeContext';
 import type { Lang, ThemeProp } from './types';
+import getSpacedLineNumber from './utils/getSpacedLineNumber';
 
 type Props = {
     code: string;
@@ -14,10 +15,6 @@ type Props = {
     theme?: ThemeProp;
     firstLine?: number;
     showLineNumbers?: boolean;
-};
-
-const styles: React.CSSProperties = {
-    display: 'table',
 };
 
 export default function CodeBlock({
@@ -32,25 +29,23 @@ export default function CodeBlock({
     const themeObject = typeof theme === 'string' ? themes[theme] : theme;
 
     const cleaned = useMemo(() => code.replace(/(?:^\n)|(?:\n$)/g, ''), [code]);
-    const tokenBlock = useMemo(
+    const { block, largestLineNumber } = useMemo(
         () => tokenizeString(lexer, cleaned, firstLine),
         [lang, firstLine],
     );
-    const lineComps = tokenBlock.map(([lineNumber, ...tokens], i) => (
+    const lineComps = block.map(([lineNumber, ...tokens], i) => (
         <Line
-            lineNumber={lineNumber}
+            lineNumber={getSpacedLineNumber(lineNumber, largestLineNumber)}
             showLineNumbers={showLineNumbers}
             tokens={tokens}
             key={i}
         />
     ));
     return (
-        <pre style={{ margin: 0, ...themeObject.DEFAULT }}>
-            <div style={{ display: 'table', width: '100%' }}>
-                <ThemeContext.Provider value={themeObject}>
-                    {lineComps}
-                </ThemeContext.Provider>
-            </div>
+        <pre style={{ ...themeObject.DEFAULT }}>
+            <ThemeContext.Provider value={themeObject}>
+                {lineComps}
+            </ThemeContext.Provider>
         </pre>
     );
 }

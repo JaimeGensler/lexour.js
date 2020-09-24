@@ -10,8 +10,14 @@ export default function getBlockManager(firstLine: number) {
     const currentLine: Line = [];
     let currentLineNumber = firstLine;
     let nextLineNumber = firstLine + 1;
+    let largestLineNumber = nextLineNumber;
+
+    const setLargest = (newLargest: number) => {
+        if (newLargest > largestLineNumber) largestLineNumber = newLargest;
+    };
 
     const addLineToBlock = () => {
+        setLargest(currentLineNumber);
         block.push([currentLineNumber, ...currentLine]);
         currentLineNumber = nextLineNumber;
         nextLineNumber++;
@@ -34,7 +40,7 @@ export default function getBlockManager(firstLine: number) {
         if (currentLine.length !== 0) {
             addLineToBlock();
         }
-        return block;
+        return { largestLineNumber, block };
     };
     const processToken = ({ value, type }: Token) => {
         if (type === 'lexour.annotation.nextLine') {

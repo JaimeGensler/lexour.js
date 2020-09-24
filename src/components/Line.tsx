@@ -5,7 +5,7 @@ import type { Token } from '../types';
 import Conditional from './Conditional';
 
 type Props = {
-    lineNumber: number;
+    lineNumber: string;
     showLineNumbers: boolean;
     tokens: Token[];
 };
@@ -16,13 +16,7 @@ const unselectable: React.CSSProperties = {
     msUserSelect: 'none',
     userSelect: 'none',
 
-    // Hacky temporary solution to getting it to be exact width of text, replace this
-    width: 1,
-    whiteSpace: 'nowrap',
-
-    display: 'table-cell',
-    paddingRight: '1rem',
-    textAlign: 'right',
+    marginRight: '1rem',
 };
 
 export default function Line({ lineNumber, showLineNumbers, tokens }: Props) {
@@ -30,11 +24,11 @@ export default function Line({ lineNumber, showLineNumbers, tokens }: Props) {
     const tokenComps = tokens.map((token, i) => <Text {...token} key={i} />);
 
     return (
-        <div style={{ display: 'table-row' }}>
+        <div>
             <Conditional shouldRender={showLineNumbers}>
-                <div style={{ ...unselectable, ...style }}>{lineNumber}</div>
+                <span style={{ ...unselectable, ...style }}>{lineNumber}</span>
             </Conditional>
-            <div style={{ display: 'table-cell' }}>{tokenComps}</div>
+            {tokenComps}
         </div>
     );
 }
