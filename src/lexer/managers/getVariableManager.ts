@@ -9,5 +9,6 @@ export default function getVariableManager() {
             return false;
         },
         recall: (key: any) => storedValues.get(key),
+        forget: (key: any) => storedValues.delete(key),
     };
 }

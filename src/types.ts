@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import type { Lexer } from './lexer/builders/buildLexer';
+import getVariableManager from './lexer/managers/getVariableManager';
 
 // === Theme Types ===
 export type BuiltInTheme = 'oneDarkPro';
@@ -21,11 +22,10 @@ export interface Token {
     value: string;
 }
 
-export interface ResolverActions {
+export interface ResolverActions extends ReturnType<typeof getVariableManager> {
+    // State Manager partial
     pushState: (newState: string) => number;
     popState: () => string;
-    // memorize: (key: any, value: any) => void;
-    // recall: (key: any) => any;
 }
 export type TokenResolver =
     | string
