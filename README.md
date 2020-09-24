@@ -29,12 +29,11 @@ It includes a number of features out of the box, including:
 -   **Annotations!** Likely the most useful and powerful part of lexour,
     annotations provide added functionality that would otherwise be impossible.
 -   **Custom theme support!** Don't like the provided themes? Make your own and
-    pass it to the `theme` prop to see it in action.
--   **Toy language support!** If you build a tokenizer with **Moo**, you can
-    pass it directly to the `lang` prop and see it in action straight away - no
-    extra setup or config necessary.
--   **Only one dependency** ([Moo!][moo]). Even better, Moo itself is tiny and
-    currently has zero dependencies.
+    pass it to the `theme` prop to see your preferred highlighting scheme.
+-   **Toy language support!** Build a tokenizer with Lexour's provided API, pass
+    it directly to the `lang` prop, and see it in action right away - no extra
+    setup or config necessary.
+-   **Zero dependencies**.
 
 ## Installation
 
@@ -100,7 +99,6 @@ in its entirety to understand what sort of actions are and are not acceptable.
 Once you've done that, read the [guide on contributing][contributing]. And
 again - thank you!
 
-[moo]: https://github.com/no-context/moo
 [docs]: ./README.md
 [conduct]: ./CODE_OF_CONDUCT.md
 [contributing]: ./README.md
