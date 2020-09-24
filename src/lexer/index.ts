@@ -19,24 +19,18 @@ export default function tokenizeString(
     const actions = { ...stateActions, ...getVariableManager() };
 
     while (register.length > 0) {
-        // ===== NEWLINE/INDENT HANDLER =====
-        const startingWhitespace = /^[\s]+/.exec(register);
-        if (!!startingWhitespace) {
-            processToken({ type: 'EMPTY', value: startingWhitespace[0] });
-            register = register.slice(startingWhitespace[0].length);
-        }
-
-        // ===== SEARCH FOR MATCH =====
-        const { hasRemainderHandler, tokenResolvers, search } = lexerStates[
+        let { hasRemainderHandler, tokenResolvers, search } = lexerStates[
             getState()
         ];
         const searchResult = search.exec(register);
+
         // ===== DUMP REGISTER =====
         if (shouldDumpRegister(searchResult, hasRemainderHandler)) {
             const token = resolveToken(register, tokenResolvers[0], actions);
             processToken(token);
             break;
         }
+
         // ===== HANDLE REMAINDER =====
         if (searchResult.index !== 0) {
             const value = register.slice(0, searchResult.index);
@@ -44,7 +38,8 @@ export default function tokenizeString(
             const token = resolveToken(value, tokenResolvers[0], actions);
             processToken(token);
         }
-        // ===== SEND TOKEN IN =====
+
+        // ===== HANDLE MATCH =====
         const matchIndex = searchResult.findIndex(
             (x, i) => x !== undefined && i !== 0,
         );

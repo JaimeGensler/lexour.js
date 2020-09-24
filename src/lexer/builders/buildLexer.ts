@@ -34,6 +34,8 @@ export default function buildLexer(defaultState: string) {
                 tokenResolvers: ['invalid'] as TokenResolver[],
             },
         );
+        searchGroups.push('(\\s+)');
+        tokenResolvers.push('EMPTY');
         const search = new RegExp(searchGroups.join('|'), 'm');
 
         lexer.states[stateName] = {
