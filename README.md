@@ -50,12 +50,13 @@ yarn add lexour
 ```
 
 **lexour has a peer dependency requirement of `react>=16.8` and
-`react-dom>=16.8`** (the introduction of hooks).
+`react-dom>=16.8`**.
 
 ## Quick Start
 
 To use lexour, you'll need to import the exposed component. The component only
-requires two props be passed - a language (lang), and the code to be tokenized.
+requires two props be passed - a language (`lang`), and the code to be
+tokenized.
 
 ```jsx
 import CodeBlock from 'lexour';
