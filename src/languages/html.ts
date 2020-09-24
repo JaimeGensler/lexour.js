@@ -1,4 +1,4 @@
-import { buildLexer, rule, remainder } from '../lexer';
+import { buildLexer, rule, remainder, comment } from '../lexer';
 
 enum HtmlState {
     MAIN = 'MAIN',
@@ -23,11 +23,11 @@ export default buildLexer(HtmlState.MAIN)
             return 'punctuation';
         }),
         rule('=', 'punctuation'),
-        rule(/[A-Za-z1-6]+/, 'tag.name'),
+        rule(/[A-Za-z0-9]+/, 'tag.name'),
         rule(
             /[\s]+[A-Za-z1-6]+/,
             value => `tag.attribute${/[\s]+id/.test(value) ? '.id' : ''}`,
         ),
-        rule(/(?:"[^"]+")|(?:'[^']+')/, 'string'),
+        rule(/(?:"[^"\r\n]+")|(?:'[^\r\n']+')/, 'string'),
     )
     .build();
