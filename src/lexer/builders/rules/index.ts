@@ -7,7 +7,10 @@ export { comment };
 import remainder from './remainder';
 export { remainder };
 
-export function rule(rawSearch: Matcher, tokenResolver: TokenResolver): Rule {
+export function rule(
+    rawSearch: Matcher | string[],
+    tokenResolver: TokenResolver,
+): Rule {
     return {
         ruleType: RuleType.COMMON,
         tokenResolver,
