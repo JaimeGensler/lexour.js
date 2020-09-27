@@ -13,7 +13,7 @@ export type ThemeProp = BuiltInTheme | Theme;
 
 // === Language Types ===
 // 'javascript' | 'js' | 'typescript'  | 'ts' | 'jsx' | 'tsx'*/;
-export type BuiltInLang = 'html' | 'terminal';
+export type BuiltInLang = 'html' | 'terminal' | 'json';
 export type Lang = BuiltInLang | Lexer;
 
 // === Lexer Types ===
@@ -29,7 +29,7 @@ export interface ResolverActions extends ReturnType<typeof getVariableManager> {
 }
 export type TokenResolver =
     | string
-    | ((value: string, actions: ResolverActions) => string | Token);
+    | ((value: string, actions: ResolverActions) => string | Token | Token[]);
 
 export enum RuleType {
     COMMON = 'COMMON',

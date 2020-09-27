@@ -43,7 +43,14 @@ export default function getBlockManager(firstLine: number) {
         }
         return { largestLineNumber, block };
     };
-    const processToken = ({ value, type }: Token) => {
+    const processTokens = (tokens: Token | Token[]) => {
+        if (Array.isArray(tokens)) {
+            tokens.forEach(token => trueProcess(token));
+        } else {
+            trueProcess(tokens);
+        }
+    };
+    const trueProcess = ({ value, type }: Token) => {
         if (type === 'lexour.annotation.nextLine') {
             nextLineNumber = parseInt(value, 10);
             return;
@@ -69,5 +76,5 @@ export default function getBlockManager(firstLine: number) {
         });
     };
 
-    return { getBlock, processToken };
+    return { getBlock, processTokens };
 }

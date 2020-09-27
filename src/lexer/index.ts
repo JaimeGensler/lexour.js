@@ -14,7 +14,7 @@ export default function tokenizeString(
     register: string,
     firstLine: number,
 ) {
-    const { getBlock, processToken } = getBlockManager(firstLine);
+    const { getBlock, processTokens } = getBlockManager(firstLine);
     const { getState, ...stateActions } = getStateManager(defaultState);
     const actions = { ...stateActions, ...getVariableManager() };
 
@@ -27,7 +27,7 @@ export default function tokenizeString(
         // ===== DUMP REGISTER =====
         if (shouldDumpRegister(searchResult, hasRemainderHandler)) {
             const token = resolveToken(register, tokenResolvers[0], actions);
-            processToken(token);
+            processTokens(token);
             break;
         }
 
@@ -36,7 +36,7 @@ export default function tokenizeString(
             const value = register.slice(0, searchResult.index);
             register = register.slice(searchResult.index);
             const token = resolveToken(value, tokenResolvers[0], actions);
-            processToken(token);
+            processTokens(token);
         }
 
         // ===== HANDLE MATCH =====
@@ -52,7 +52,7 @@ export default function tokenizeString(
         const tokenResolver = tokenResolvers[matchIndex];
 
         const token = resolveToken(value, tokenResolver, actions);
-        processToken(token);
+        processTokens(token);
         register = register.slice(value.length);
     }
     return getBlock();
