@@ -19,7 +19,7 @@ export default function tokenizeString(
     const actions = { ...stateActions, ...getVariableManager() };
 
     while (register.length > 0) {
-        let { hasRemainderHandler, tokenResolvers, search } = lexerStates[
+        const { hasRemainderHandler, tokenResolvers, search } = lexerStates[
             getState()
         ];
         const searchResult = search.exec(register);

@@ -8,6 +8,7 @@ import {
     getKeepToken,
     getMarkAsToken,
     getNextLineToken,
+    getCommentToken,
 } from '../../utils/annotations';
 
 export default function comment(
@@ -37,7 +38,7 @@ const getCommentResolver = (start: string, end: string): TokenResolver => {
         const content = annotationSearch.exec(match)![1];
         switch (getAnnotationType(content)) {
             case AnnotationType.COMMENT:
-                return { value: '', type: 'lexour.annotation' };
+                return getCommentToken();
             case AnnotationType.KEEP:
                 return getKeepToken(match);
             case AnnotationType.MARK_AS:

@@ -1,4 +1,5 @@
 import type { Token } from '../../types';
+import Lexour from '../tokenTypes/lexour';
 
 export enum AnnotationType {
     COMMENT = 'COMMENT',
@@ -25,6 +26,9 @@ export function getAnnotationType(value: string): AnnotationType {
     return AnnotationType.COMMENT;
 }
 
+export function getCommentToken(): Token {
+    return { value: '', type: Lexour.COMMENT_ANNOTATION };
+}
 export function getKeepToken(match: string): Token {
     return { value: match.replace(/KEEP[\s]/, ''), type: 'comment' };
 }
@@ -35,5 +39,5 @@ export function getMarkAsToken(match: string): Token {
 }
 export function getNextLineToken(match: string): Token {
     const [, value] = annoSearch.NEXT_LINE.exec(match)!; // Has already been tested to match
-    return { value, type: 'lexour.annotation.nextLine' };
+    return { value, type: Lexour.NEXT_LINE_ANNOTATION };
 }
