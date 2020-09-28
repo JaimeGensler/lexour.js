@@ -35,7 +35,7 @@ export default function buildLexer(defaultState: string) {
             },
         );
         searchGroups.push('(\\s+)');
-        tokenResolvers.push('EMPTY');
+        tokenResolvers.push('lexour.empty');
         const search = new RegExp(searchGroups.join('|'), 'm');
 
         lexer.states[stateName] = {

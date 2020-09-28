@@ -31,8 +31,8 @@ export default function getBlockManager(firstLine: number) {
         // its type is either "EMPTY" or the same as the current.
         return (
             previousToken !== undefined &&
-            (previousToken.type === 'EMPTY' ||
-                currentToken.type === 'EMPTY' ||
+            (previousToken.type === 'lexour.empty' ||
+                currentToken.type === 'lexour.empty' ||
                 previousToken.type === currentToken.type)
         );
     };
