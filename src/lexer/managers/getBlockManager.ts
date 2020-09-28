@@ -1,3 +1,4 @@
+import Lexour from '../tokenTypes/lexour';
 import type { Token } from '../../types';
 
 type Line = Token[];
@@ -31,8 +32,8 @@ export default function getBlockManager(firstLine: number) {
         // its type is either "EMPTY" or the same as the current.
         return (
             previousToken !== undefined &&
-            (previousToken.type === 'lexour.empty' ||
-                currentToken.type === 'lexour.empty' ||
+            (previousToken.type === Lexour.EMPTY ||
+                currentToken.type === Lexour.EMPTY ||
                 previousToken.type === currentToken.type)
         );
     };
@@ -51,7 +52,7 @@ export default function getBlockManager(firstLine: number) {
         }
     };
     const trueProcess = ({ value, type }: Token) => {
-        if (type === 'lexour.annotation.nextLine') {
+        if (type === Lexour.NEXT_LINE_ANNOTATION) {
             nextLineNumber = parseInt(value, 10);
             return;
         }
@@ -64,7 +65,7 @@ export default function getBlockManager(firstLine: number) {
                     currentLine.push(currentToken);
                 } else {
                     previousToken.type =
-                        currentToken.type === 'EMPTY'
+                        currentToken.type === Lexour.EMPTY
                             ? previousToken.type
                             : currentToken.type;
                     previousToken.value += currentToken.value;
