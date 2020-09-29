@@ -24,7 +24,7 @@ export default function Line({ lineNumber, showLineNumbers, tokens }: Props) {
     const tokenComps = tokens.map((token, i) => <Text {...token} key={i} />);
 
     return (
-        <div>
+        <div style={{ flex: 1 }}>
             <Conditional shouldRender={showLineNumbers}>
                 <span style={{ ...unselectable, ...style }}>{lineNumber}</span>
             </Conditional>

@@ -42,7 +42,19 @@ export default function CodeBlock({
         />
     ));
     return (
-        <pre style={{ ...themeObject.DEFAULT }}>
+        <pre
+            style={{
+                ...themeObject.DEFAULT,
+                // Temp
+                overflowX: 'auto',
+                overflowY: 'auto',
+                height: '100%',
+
+                // Not temp
+                display: 'flex',
+                flexDirection: 'column',
+            }}
+        >
             <ThemeContext.Provider value={themeObject}>
                 {lineComps}
             </ThemeContext.Provider>
