@@ -19,8 +19,12 @@ export default function tokenizeString(
     const actions = { ...stateActions, ...getVariableManager() };
 
     while (register.length > 0) {
+        const state = getState();
+        if (!(state in lexerStates)) {
+            throw new Error(`State "${state}" not found in lexer rules.`);
+        }
         const { hasRemainderHandler, tokenResolvers, search } = lexerStates[
-            getState()
+            state
         ];
         const searchResult = search.exec(register);
 
@@ -46,7 +50,7 @@ export default function tokenizeString(
         const value = searchResult[matchIndex];
         if (value.length === 0) {
             throw new Error(
-                `A lexer rule (no. ${matchIndex}) matched an empty string.`,
+                `Lexer rule (no. ${matchIndex} of state "${state}") matched an empty string.`,
             );
         }
         const tokenResolver = tokenResolvers[matchIndex];
