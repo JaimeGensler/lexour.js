@@ -1,59 +1,32 @@
+import shouldMergeTokens from '../utils/shouldMergeTokens';
 import Lexour from '../tokenTypes/lexour';
 import type { Token } from '../../types';
 
-type Line = Token[];
-type Block = Array<[number, ...Line]>;
+type Block = Array<[number, ...Token[]]>;
 
 const linebreak = /\r\n|\r|\n/;
-
 export default function getBlockManager(firstLine: number) {
     const block: Block = [];
-    const currentLine: Line = [];
-    let currentLineNumber = firstLine;
-    let nextLineNumber = firstLine + 1;
-    let largestLineNumber = nextLineNumber;
-
-    const setLargest = (newLargest: number) => {
-        if (newLargest > largestLineNumber) largestLineNumber = newLargest;
+    const currentLine: Token[] = [];
+    const lineNumbers = {
+        current: firstLine,
+        next: firstLine + 1,
+        largest: firstLine,
     };
 
     const addLineToBlock = () => {
-        setLargest(currentLineNumber);
-        block.push([currentLineNumber, ...currentLine]);
-        currentLineNumber = nextLineNumber;
-        nextLineNumber++;
+        if (lineNumbers.current > lineNumbers.largest) {
+            lineNumbers.largest = lineNumbers.current;
+        }
+        block.push([lineNumbers.current, ...currentLine]);
+        lineNumbers.current = lineNumbers.next;
+        lineNumbers.next++;
         currentLine.length = 0;
     };
-    const shouldMergeTokens = (
-        previousToken: Token | undefined,
-        currentToken: Token,
-    ) => {
-        // Merge if there is a previous token (not a fresh line), and
-        // its type is either "EMPTY" or the same as the current.
-        return (
-            previousToken !== undefined &&
-            (previousToken.type === Lexour.EMPTY ||
-                currentToken.type === Lexour.EMPTY ||
-                previousToken.type === currentToken.type)
-        );
-    };
 
-    const getBlock = () => {
-        if (currentLine.length !== 0) {
-            addLineToBlock();
-        }
-        return { largestLineNumber, block };
-    };
-    const processTokens = (tokens: Token | Token[]) => {
-        if (Array.isArray(tokens)) {
-            tokens.forEach(token => trueProcess(token));
-        } else {
-            trueProcess(tokens);
-        }
-    };
     const trueProcess = ({ value, type }: Token) => {
         if (type === Lexour.NEXT_LINE_ANNOTATION) {
-            nextLineNumber = parseInt(value, 10);
+            lineNumbers.next = parseInt(value, 10);
             return;
         }
 
@@ -75,6 +48,20 @@ export default function getBlockManager(firstLine: number) {
                 addLineToBlock();
             }
         });
+    };
+
+    const getBlock = () => {
+        if (currentLine.length !== 0) {
+            addLineToBlock();
+        }
+        return { largestLineNumber: lineNumbers.largest, block };
+    };
+    const processTokens = (tokens: Token | Token[]) => {
+        if (Array.isArray(tokens)) {
+            tokens.forEach(token => trueProcess(token));
+        } else {
+            trueProcess(tokens);
+        }
     };
 
     return { getBlock, processTokens };
