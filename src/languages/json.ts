@@ -1,4 +1,5 @@
 import { buildLexer, rule, remainder, comment } from '../lexer';
+import splitLastChar from './utils/splitLastChar';
 
 enum JsonState {
     MAIN = 'MAIN',
@@ -12,14 +13,10 @@ export default buildLexer(JsonState.MAIN)
         JsonState.MAIN,
         comment('//'),
         comment('/*', '*/', true),
-        rule(/"[A-Za-z0-9]+":/, match => {
-            const property = {
-                value: match.slice(0, match.length - 1),
-                type: 'variable.property',
-            };
-            const colon = { value: ':', type: 'punctuation' };
-            return [property, colon];
-        }),
+        rule(
+            /"[A-Za-z0-9]+":/,
+            splitLastChar('variable.property', 'punctuation'),
+        ),
         rule(/[\[\]\{\},]/, 'punctuation'),
         rule('"', (_, { pushState }) => {
             pushState(JsonState.STRING);
