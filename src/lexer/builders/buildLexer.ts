@@ -1,16 +1,6 @@
 import { RuleType } from '../../types';
 import type { Rule } from '../../types';
-import type { TokenResolver } from '../../types';
-
-export interface LexerStateRules {
-    readonly hasRemainderHandler: boolean;
-    readonly search: RegExp;
-    readonly tokenResolvers: TokenResolver[];
-}
-export interface Lexer {
-    readonly defaultState: string;
-    readonly states: Record<string, LexerStateRules>;
-}
+import type { Lexer, TokenResolver } from '../../types';
 
 export default function buildLexer(defaultState: string) {
     const lexer: Lexer = { defaultState, states: {} };

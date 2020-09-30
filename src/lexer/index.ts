@@ -7,7 +7,7 @@ import getBlockManager from './managers/getBlockManager';
 import getVariableManager from './managers/getVariableManager';
 import resolveToken from './utils/resolveToken';
 import shouldDumpRegister from './utils/shouldDumpRegister';
-import type { Lexer } from './builders/buildLexer';
+import type { Lexer } from '../types';
 
 export default function tokenizeString(
     { defaultState, states: lexerStates }: Lexer,
