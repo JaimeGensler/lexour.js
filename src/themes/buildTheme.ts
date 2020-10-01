@@ -5,12 +5,14 @@ export default function buildTheme(blockStyles: CSSProperties) {
     const theme: Theme = {
         'lexour.block': blockStyles,
     };
-    const applyObject = (key: string, value: object) => {
-        theme[`lexour.${key}`] = value;
+    const lineNumbers = (obj: CSSProperties) => {
+        theme['lexour.lineNumbers'] = obj;
         return builderObject;
     };
-    const invalid = (obj: CSSProperties) => applyObject('invalid', obj);
-    const lineNumbers = (obj: CSSProperties) => applyObject('lineNumbers', obj);
+    const invalid = (obj: CSSProperties) => {
+        theme['invalid'] = obj;
+        return builderObject;
+    };
 
     const apply = (property: string, value: string, tokenTypes: string[]) => {
         tokenTypes.forEach(tokenType => {
