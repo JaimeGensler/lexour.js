@@ -8,6 +8,9 @@ export default function buildLexer(defaultState: string) {
     const build = () => lexer;
     const addState = (stateName: string, ...rules: Rule[]) => {
         let hasRemainderHandler = false;
+        // The first tokenResolver (i = 0) is always the remainder handler.
+        // The index of the result in the RegExpExecArray will match the index
+        // of the token resolver for all other matches this way.
         const { searchGroups, tokenResolvers } = rules.reduce(
             (acc, { ruleType, ...data }) => {
                 if (ruleType === RuleType.COMMON) {
@@ -33,8 +36,9 @@ export default function buildLexer(defaultState: string) {
             search,
             tokenResolvers,
         };
-        return { addState, build };
+        return builderObject;
     };
 
-    return { addState, build };
+    const builderObject = { addState, build };
+    return builderObject;
 }
