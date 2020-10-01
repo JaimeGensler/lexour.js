@@ -1,22 +1,21 @@
 import { useContext, CSSProperties } from 'react';
 import ThemeContext from './ThemeContext';
 
-interface Acc {
-    style?: CSSProperties;
-    [other: string]: any;
-}
-
-// This is temporary - the shape of Theme will be entirely redone
-
-export default function useTheme(tokenType: string): CSSProperties {
+export default function useTheme(
+    tokenType: string,
+    isLexourUtil = false,
+): CSSProperties {
     const theme = useContext(ThemeContext);
-    return (
-        tokenType
-            .replace(/__[A-Za-z1-9]+?$/, '')
-            .split('.')
-            .reduce(
-                (acc: Acc, nested: keyof typeof acc) => acc[nested] ?? acc,
-                theme,
-            ).style ?? {}
-    );
+    if (isLexourUtil) {
+        return theme[tokenType];
+    }
+
+    let currentLookup = '';
+    return tokenType.split('.').reduce((acc, val, i) => {
+        currentLookup += `${i === 0 ? '' : '.'}${val}`;
+        if (!(currentLookup in theme)) {
+            return acc;
+        }
+        return { ...acc, ...theme[currentLookup] };
+    }, {});
 }

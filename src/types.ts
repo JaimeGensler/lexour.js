@@ -1,13 +1,13 @@
-import type { CSSProperties } from 'react';
+import buildTheme from './themes/buildTheme';
 import getStateManager from './lexer/managers/getStateManager';
 import getVariableManager from './lexer/managers/getVariableManager';
+import { CSSProperties } from 'react';
 
 // === Theme Types ===
 export type BuiltInTheme = 'oneDarkPro';
 export interface Theme {
-    DEFAULT: CSSProperties;
-    LINE_NUMBER: CSSProperties;
-    [tokenName: string]: CSSProperties;
+    'lexour.block': CSSProperties;
+    [key: string]: CSSProperties;
 }
 export type ThemeProp = BuiltInTheme | Theme;
 

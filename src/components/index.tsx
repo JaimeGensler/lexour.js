@@ -41,7 +41,7 @@ export default function CodeBlock({
     return (
         <pre
             style={{
-                ...themeObject.DEFAULT,
+                ...themeObject['lexour.block'],
                 // Temp
                 overflowX: 'auto',
                 overflowY: 'auto',

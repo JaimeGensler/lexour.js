@@ -20,7 +20,7 @@ const unselectable: React.CSSProperties = {
 };
 
 export default function Line({ lineNumber, showLineNumbers, tokens }: Props) {
-    const style = useTheme('LINE_NUMBER');
+    const style = useTheme('lexour.lineNumbers', true);
     const tokenComps = tokens.map((token, i) => <Text {...token} key={i} />);
 
     return (
