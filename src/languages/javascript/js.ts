@@ -1,105 +1,102 @@
+import { buildLexer, comment, rule, remainder, keywords } from '../../lexer';
 import jsKeywords from './keywords.json';
+import jsOperators from './operators';
 
-const addState = (...x: any[]): any => {};
-const pushState = (...x: any[]): any => {};
-const popState = (...x: any[]): any => {};
-const comment = (...x: any[]): any => {};
-const rule = (x?: any, y?: ((...z: any[]) => any) | string): any => {};
-const keywords = (...args: any[]): any => {};
-const remainder = (...args: any[]): any => {};
-
-const memorize = (...x: any[]): any => {};
-const recall = (...x: any[]): any => {};
-
-enum JsStates {
+enum JsState {
     MAIN = 'MAIN',
     STRING = 'STRING',
     TEMPLATE_LITERAL = 'TEMPLATE_LITERAL',
 }
 
-addState(
-    JsStates.MAIN,
-    comment('#!'),
-    comment('//'),
-    comment('/*', '*/', true),
-    rule(/"|'/, match => {
-        memorize('STRING_ENTRY', match === '"' ? 'DOUBLE' : 'SINGLE');
-        pushState(JsStates.STRING);
-        return 'string';
-    }),
-    rule('`', match => {
-        pushState(JsStates.TEMPLATE_LITERAL);
-        return 'string.template';
-    }),
-    rule(/[\{\}\(\)\,\[\]\;\.]/, 'punctuation'),
-    keywords(jsKeywords, ''),
-).addState(
-    JsStates.STRING,
-    rule(/(?:\\.)|(?:\\u[0-9]{4})/, 'string.escaped'),
-    rule(/"|'/, match => {
-        if (recall('STRING_ENTRY') === match) {
-            popState();
-        }
-        return 'string';
-    }),
-    remainder('string'),
-);
+const identifier = '[_$A-Za-z][_$A-Za-z0-9]*';
+export default buildLexer(JsState.MAIN)
+    .addState(
+        JsState.MAIN,
+        // === COMMENTS ===
+        comment('#!'),
+        comment('//'),
+        comment('/*', '*/', true),
+
+        // === VALUES ===
+        rule(/true|false/, 'literal.boolean'),
+        rule(/undefined|null/, 'literal.value'),
+        rule(
+            // Match [Decimal (leading 0 permitted), binary, octal, hex], potentially with exponentiation
+            /(?:(?:\d+|(?:\d*\.\d+))|(?:0[bB][01]+)|(?:0[oO][0-7]+)|(?:0[xX][\dA-Fa-f]+))(?:[eE]\d+)?/,
+            match => {
+                // May remove type spec
+                const type = /b/i.test(match)
+                    ? 'binary'
+                    : /x/i.test(match)
+                    ? 'hexadecimal'
+                    : /o|(?:^0[0-7]+$)/i.test(match)
+                    ? 'octal'
+                    : 'decimal';
+                return `literal.number.${type}`;
+            },
+        ),
+
+        // === KEYWORDS, OPERATORS ===
+        keywords(jsKeywords, 'keyword', new RegExp(identifier)),
+        rule('=>', 'function.arrow'),
+        rule(jsOperators, 'operator'),
+
+        // === IDENTIFIERS ===
+        rule(new RegExp(identifier), 'variable'),
+
+        // === STRINGS ===
+        rule(/"|'|`/, (match, { recall, memorize, pushState }) => {
+            const stringManager = recall('STRING_MANAGER');
+            if (stringManager === undefined) {
+                memorize('STRING_MANAGER', [match]);
+            } else {
+                stringManager.push(match);
+            }
+
+            pushState(JsState.STRING);
+            return 'string';
+        }),
+        rule('`', (_, { pushState }) => {
+            pushState(JsState.TEMPLATE_LITERAL);
+            return 'string';
+        }),
+        // === PUNCTUATION ===
+        rule(/[\{\}\(\)\,\[\]\;\.]/, (match, { pushState, popState }) => {
+            if (match === '{') {
+                pushState(JsState.MAIN);
+            } else if (match === '}') {
+                const nextState = popState();
+                if (nextState === JsState.STRING) {
+                    return 'string.interpolation';
+                }
+            }
+            return 'punctuation';
+        }),
+    )
+    .addState(
+        JsState.STRING,
+        rule(/(?:\\.)|(?:\\u[0-9]{4})/, 'string.escape'),
+        rule('${', (_, { recall, pushState }) => {
+            const stringManager: string[] = recall('STRING_MANAGER');
+            if (stringManager[stringManager.length - 1] === '`') {
+                pushState(JsState.MAIN);
+                return 'string.interpolation';
+            }
+            return 'string';
+        }),
+        rule(/"|'|`/, (match, { recall, popState }) => {
+            const stringManager = recall('STRING_MANAGER');
+            if (stringManager[stringManager.length - 1] === match) {
+                stringManager.pop();
+                popState();
+            }
+            return 'string';
+        }),
+        remainder('string'),
+    )
+    .build();
 
 // export default addState({
-//         'keyword.arrow': '=>',
-
-//         'operator': [
-//             // Arithmetic
-//             '+',
-//             '*',
-//             '/',
-//             '-',
-//             '%',
-//             '++',
-//             '--',
-//             '**',
-
-//             // Assignment
-//             '=',
-//             '+=',
-//             '-=',
-//             '*=',
-//             '/=',
-//             '**=',
-//             '<<=',
-//             '>>=',
-//             '>>>=',
-//             '&=',
-//             '^=',
-//             '|=',
-//             '&&=',
-//             '||=',
-//             '??=',
-
-//             // Ternary (this may need some work)
-//             '?',
-//             ':',
-
-//             // Logical
-//             '==',
-//             '!=',
-//             '===',
-//             '!==',
-//             '>=',
-//             '>',
-//             '<',
-//             '<=',
-
-//             // Comparison
-//             '&&',
-//             '||',
-//             '!',
-//         ],
-//         'literal.boolean': ['true', 'false'],
-//         'literal.value': ['null', 'undefined'],
-//         // There are more ways of declaring numbers that I can account for reasonably easily
-//         'literal.number': /[\d]+(?:\.[\d]+)?/,
-
 //         'constant.this': 'this',
 //         'constant.class': [
 //             {
@@ -134,39 +131,6 @@ addState(
 //         ),
 //         'constant__ref': /[A-Z][_$A-Za-z0-9]*/,
 //         'variable__ref': new RegExp(validIdentifier),
-
-//         'empty': { match: /^[ \t]*\n$/, lineBreaks: true },
-//         'newline': { match: /\n/, lineBreaks: true },
-//         'indentation': /^[ \t]+/,
-//         'whitespace': /[ \t]+/,
-
 //         'invalid': moo.error,
-//     },
-//     commentBlock: {
-//         comment: [
-//             { match: /.+?(?:(?=\*\/)|(?=\n))/ },
-//             { match: /\*\//, pop: 1 },
-//         ],
-//         newline: { match: /\n/, lineBreaks: true },
-//         indentation: /^[ \t]+/,
-//     },
-//     string: {
-//         'string.escape': escapedSequence,
-//         'string': [
-//             // This works for now, but does create some unnecessary token groups
-//             // (but non-noticeable/problematic groups)
-//             { match: /(?:[^\\]+?(?="|\\))|(?:[^\\]+?(?='|\\))/ },
-//             { match: /(?:(?<=".+?)")|(?:(?<='.+?)')/, pop: 1 },
-//         ],
-//     },
-//     templateLiteral: {
-//         'string.escape': escapedSequence,
-//         'string.template': [
-//             // This needs content!
-//             { match: '`', pop: 1 },
-//         ],
-//         'string.template.interpolation': { match: '${', push: 'main' },
-//         'newline': { match: /\n/, lineBreaks: true },
-//         'whitespace': /[ \t]+/,
 //     },
 // });

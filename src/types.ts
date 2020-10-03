@@ -12,8 +12,13 @@ export interface Theme {
 export type ThemeProp = BuiltInTheme | Theme;
 
 // === Language Types ===
-// 'javascript' | 'js' | 'typescript'  | 'ts' | 'jsx' | 'tsx'*/;
-export type BuiltInLang = 'html' | 'terminal' | 'json' | 'css';
+export type BuiltInLang =
+    | 'html'
+    | 'terminal'
+    | 'json'
+    | 'css'
+    | 'javascript'
+    | 'js';
 export type Lang = BuiltInLang | Lexer;
 
 // === Lexer Types ===
