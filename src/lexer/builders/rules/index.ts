@@ -6,6 +6,8 @@ import comment from './comment';
 export { comment };
 import remainder from './remainder';
 export { remainder };
+import keywords from './keywords';
+export { keywords };
 
 export function rule(
     searchExpression: string | string[] | RegExp,
