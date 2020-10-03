@@ -2,9 +2,9 @@ export default {
     PUNCTUATION: 'punctuation',
 
     SELECTOR_UNIVERAL: 'variable',
-    SELECTOR_TAG: 'variable',
-    SELECTOR_CLASS: 'literal',
-    SELECTOR_ID: 'function',
+    SELECTOR_TAG: 'tag.name',
+    SELECTOR_CLASS: 'tag.attribute',
+    SELECTOR_ID: 'tag.attribute.id',
     SELECTOR_PSEUDOCLASS: 'string.escape',
 
     COMBINATOR: 'string.escape',
