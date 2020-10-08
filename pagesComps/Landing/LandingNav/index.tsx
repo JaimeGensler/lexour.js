@@ -1,8 +1,13 @@
 import pageList from '../../pageList';
 import LandingNavItem from './LandingNavItem';
 
-const pageLinks = pageList.map(page => (
-    <LandingNavItem {...page} key={page.title} />
+const getStarted = {
+    title: 'Getting Started',
+    pageURL: '#getting-started',
+};
+
+const pageLinks = [getStarted, ...pageList].map(({ title, pageURL }) => (
+    <LandingNavItem title={title} pageURL={pageURL} key={title} />
 ));
 
 export default function LandingNav() {

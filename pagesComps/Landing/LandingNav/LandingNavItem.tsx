@@ -2,8 +2,6 @@ import Link from 'next/link';
 type Props = {
     title: string;
     pageURL: string;
-    // subItems is typed lazily because it's unused in this section
-    subItems: any;
 };
 
 export default function LandingNavItem({ title, pageURL }: Props) {
