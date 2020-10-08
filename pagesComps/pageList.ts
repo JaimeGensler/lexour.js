@@ -1,24 +1,16 @@
 export default [
     {
-        title: 'Quick Start',
-        pageURL: '/docs/get-started',
-        subItems: [
-            { title: 'Installation', id: 'install' },
-            { title: 'Basic Usage', id: 'basic-usage' },
-        ],
-    },
-    {
-        title: 'Lexing Rules',
-        pageURL: '/docs/lexing-rules',
-        subItems: [],
-    },
-    {
         title: 'Props',
         pageURL: '/docs/props',
         subItems: [
             { title: 'Custom Props', id: 'custom-props' },
             { title: 'Standard Props', id: 'standard-props' },
         ],
+    },
+    {
+        title: 'Lexing Rules',
+        pageURL: '/docs/lexing-rules',
+        subItems: [],
     },
     {
         title: 'Annotations',
