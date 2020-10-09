@@ -16,7 +16,7 @@ type Props = {
 
 export default function NavItem({ title, pageURL, subItems }: Props) {
     const { pathname } = useRouter();
-    const isCurrentPage = useRouter() === pageURL;
+    const isCurrentPage = pathname === pageURL;
 
     const sublist = isCurrentPage
         ? subItems.map(item => <NavSubItem {...item} key={item.title} />)
