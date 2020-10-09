@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import '../tailwind.css';
+import '../pagesComps/tailwind.css';
 import DocsLayout from '../pagesComps/DocsLayout';
 import getPageTitle from '../pagesComps/utils/getPageTitle';
 import { useRouter } from 'next/router';
